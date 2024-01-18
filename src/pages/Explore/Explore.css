@@ -1,0 +1,145 @@
+/* filter search */
+.filter-section{
+    position: sticky;
+    top: 70px;
+    background: white;
+    border-bottom: 1px solid rgb(208, 208, 208);
+    z-index: 100;
+}
+.filter-box{
+    padding-block:15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+/* every dd-selected */
+.filter-box > div{
+    margin: 0;
+}
+.filter-box > div:hover{
+    background: #f2f2f2b9;
+}
+/* search bar */
+.search-bar-filter{
+    --borderRadius:5px;
+    position: relative;
+    display: flex;
+    width: 330px;
+    margin: 0;
+}
+/* status dropdown in search bar */
+.type-filter{
+   width: 30%;
+}
+.type-filter .dd-selected{
+    background: #ddd;
+    border-radius: 0px;
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+}
+.type-search{
+    position: relative;
+    width: 70%;
+}
+.search-icon{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: gray;
+    font-size: 20px;
+}
+.search-bar-filter input{
+    border: 1px solid #b7b7b7b9;
+    outline: none;
+    border-top-right-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    padding-right: var(--borderRadius);
+    padding-left: 35px;
+    height: 100%;
+    width: 100%;
+}
+/* property type dropdown */
+.property-filter{
+    width: 250px;
+}
+/* filter modal toggle-btn */
+.filter-modal-btn{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: auto;
+    padding-inline: 10px;
+}
+.filter-modal-btn svg{
+    transform: rotate(90deg);
+    font-size: 20px;
+}
+.filter-modal-btn.dd-selected::after{
+    display: none;
+}
+@media (max-width:768px) {
+    .filter-section{
+       top: 60px; 
+    }
+}
+@media (max-width:425px) {
+    .search-bar-filter{
+        width: 100%;
+    }
+    .price-filter, .property-filter{
+        display: none;
+    }
+}
+
+
+/* content */
+.explore-header{
+    text-align: start;
+    padding-bottom: 40px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.explore-header > div{
+    margin: 0;
+}
+.explore-sort{
+    width: 220px;
+}
+.breadcumbs{
+    text-align: start;
+    margin: 30px 0 10px;
+    user-select: none;
+}
+
+
+/* pagination */
+.pagination{
+    display: flex;
+    justify-content: center;
+    padding: 50px 10px;
+    gap:10px;
+}
+.pagination button{
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+    display: grid;
+    place-items: center;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+.pagination button:disabled{
+    border: 2px solid rgb(0, 128, 255);
+    color: black;
+    background: #f4f4f4;
+}
+.pagination button:hover{
+    background: #f4f4f4;
+}

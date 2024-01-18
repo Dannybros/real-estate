@@ -1,0 +1,62 @@
+
+.land-item {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 3%;
+    overflow:hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.land-item:first-child{
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.land-item:first-child .land-price{
+    font-size: clamp(16px, 2vw, 24px);
+}
+.land-item:first-child .land-item-body {
+    font-size: clamp(11px, 1.5vw, 18px);
+}
+.land-item:first-child img{
+    aspect-ratio: 4/3;
+}
+.land-item img{
+    width: 100%;
+    aspect-ratio: 10/7;
+    vertical-align: top;
+}
+.land-item-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.land-item-body{
+    flex: 1;
+    padding: 10px;
+    text-align: start;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.land-item-body address{
+   font-style:normal;
+   color: #5c5c5c;
+}
+@media (max-width:1100px) {
+    .land-item:nth-child(7n+6){
+        display: none;
+    }
+}
+
+@media (max-width:500px) {
+    .land-item:first-child{
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .land-item:first-child img{
+        aspect-ratio: 10/7;
+    }
+}

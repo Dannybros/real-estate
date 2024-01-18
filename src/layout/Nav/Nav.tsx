@@ -1,14 +1,13 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect} from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { CiMenuKebab } from "react-icons/ci";
 import './Nav.css';
 
 function Nav() {
 
   const [showColor, setShowColor] = useState<Boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<Boolean>(false);
-  const [showDropMenu, setShowDropMenu] = useState<Boolean>(true);
   const location = useLocation();
-  const pathname = location.pathname;
 
   const changeNavColor = () =>{
     if(window.scrollY >= 80) setShowColor(true);
@@ -19,35 +18,46 @@ function Nav() {
     setShowMobileMenu(!showMobileMenu);
   }
 
-  window.addEventListener("scroll", changeNavColor);
+  useEffect(() => {
+    window.addEventListener('scroll', changeNavColor);
+    return () => {
+    window.removeEventListener('scroll', changeNavColor);
+    };
+}, []);
 
-  const toggleSubMenu=()=>{
-    setShowDropMenu(!showDropMenu);
-  }
+  const isHomePage = location.pathname === '/' ? true : false;
 
   return (
     <>
-    <nav className={showColor? 'nav': 'nav transparent-wrap'}> 
+    <nav className={(isHomePage && !showColor) ? 'nav transparent-wrap' : 'nav'}> 
       <div className="navbar">
         <div className='sidebar-icon' onClick={toggleShowMobileMenu}>
-          <div className="sidebar-line"></div>
-          <div className="sidebar-line"></div>
-          <div className="sidebar-line"></div>
+          <CiMenuKebab/>
         </div>
         <div className="logo">
+          <Link to='/'>
           <img src="https://sevenstonesdxb.com/wp-content/uploads/2023/02/logo-01.svg" width="127px" alt="logo"/>
+          </Link>
         </div>
         <div className="nav-menu">
-          <ul className='main-menu nav-text-style'>
-            <li className='nav-link'>Home</li>
-            <li className='nav-link'>Buy</li>
-            <li className='nav-link'>Rent</li>
-            <li className='nav-link'>Off-Plan</li>
+          <ul className='main-menu'>
+            <Link to='/'>
+              <li className='nav-link'> Home </li>
+            </Link>
+            <Link to='/explore'>
+              <li className='nav-link'> Buy </li>
+            </Link>
+            <Link to='/explore'>
+              <li className='nav-link'> Rent </li>
+            </Link>
+            <Link to='/explore'>
+              <li className='nav-link'> Sell </li>
+            </Link>
             <li className='nav-link dropdown'>
               <span>
                 About Us
               </span>
-              <ul className={showDropMenu? 'dropdown-menu active' : 'dropdown-menu'}>
+              <ul className='dropdown-menu'>
                 <li>Our Story</li>
                 <li>Our Team</li>
                 <li>Contact</li>
@@ -61,7 +71,9 @@ function Nav() {
     <div className={`sidebar-mobile ${showMobileMenu && 'show'}`}>
       <div className='sidebar-overlay' onClick={toggleShowMobileMenu}></div>
       <div className='sidebar-menu'>
-        <div className="sidebar-close-icon" onClick={toggleShowMobileMenu}></div>
+        <div className="sidebar-close-icon" onClick={toggleShowMobileMenu}>
+
+        </div>
         <ul className='sidebar-list'>
           <li>Home</li>
           <li>Buy</li>

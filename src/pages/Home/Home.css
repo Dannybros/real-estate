@@ -1,0 +1,356 @@
+.flex-center{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.section-padding{
+    padding-top:50px ;
+}
+
+
+/* hero section */
+.hero-element{
+    height: 100dvh;
+    margin-top: -80px;
+    background-image: url(https://sevenstonesdxb.com/wp-content/uploads/2023/02/Vida-scaled-2.jpg);
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.hero-overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    opacity: 0.35;
+    transition: all 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+.hero-container{
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-widget{
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+.hero-title{
+    margin-bottom: 70px;
+}
+.search-section{
+    max-width: 800px;
+    width: 100%;
+    margin-top: 20px;   
+}
+.search-tabs{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.search-tabs li{
+    width: 80px;
+    display: block;
+    margin: 0 2px;
+    padding: 10px 20px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    background: black;
+    color: #fff;
+    cursor: pointer;
+}
+.search-tabs li.tab-active{
+    background: white;
+    color: #000;
+}
+.search-form{
+    background:#fff;
+    border-radius: 7px;
+    padding: 20px;
+}
+.search-fields-box{
+    --spacer: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: var(--spacer);
+    gap: var(--spacer);
+}
+.search-field{
+    margin: 0;
+}
+.search-field:last-child{
+    grid-column: span 3;
+}
+.search-input{
+    width: 100%;
+    color: black;
+    text-transform: capitalize;
+}
+.search-area{
+    flex-basis: 40%;
+}
+.search-btn-box{
+    display: flex;
+    justify-content: center;
+    padding-inline: 5px;
+}
+.search-btn{
+    flex-basis: 15%;
+    background: #000;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.search-btn:hover{
+    background: #000000c9;
+}
+.search-btn.cancel{
+    background: rgb(161, 47, 47);
+    color: white;
+    margin-left: 30px;
+}
+.search-btn.cancel:hover{
+    background: rgb(119, 33, 33);
+}
+@media (max-width: 768px) {
+    .hero-element{
+        margin-top: -40px;
+    }
+    .hero-title{
+        text-wrap: balance;
+    }
+    .hero-subtitle{
+        font-size: 22px;
+    }
+    .search-form{
+        flex-direction: column;
+        padding: 15px;
+    }
+    .search-fields-box{
+        --spacer: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 15px;
+    }
+    .search-field:last-child{
+        grid-column: auto;
+    }
+    .search-btn{
+        padding: 10px;
+        width: 100%;
+    }
+}
+@media (max-width: 425px){
+    .hero-title{
+        margin-bottom: 10px;
+    }
+    .search-fields-box{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+/* featured */
+.feature-section h1{
+    text-align: start;
+}
+.feature-section p{
+    text-align: start;
+    color: grey;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.feature-card-wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    column-gap: 20px;
+    row-gap: 30px;
+}
+@media (max-width:500px) {
+    .feature-card-wrapper{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* new-section */
+.new-section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.new-section h1{
+    text-align: start;
+    margin-inline: 0;
+}
+.slider-btn-box{
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+.slider-btn{
+    border: 2px solid rgb(185, 185, 185);
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+    color: rgb(185, 185, 185);
+}
+.slider-btn:hover{
+    border: 1px solid #444;
+    color: #444;
+}
+.slider-wrapper{
+    margin: 0 -10px;
+}
+.new-property-item{
+    padding: 0 10px;
+}
+
+
+/* villa-section */
+.land-section{
+    padding-bottom:100px ;
+}
+.land-section h1{
+    margin-block: 20px;
+    text-align: start;
+}
+.land-container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+@media (max-width:1100px) {
+    .land-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width:500px) {
+    .land-section{
+        padding-bottom: 50px;
+    }
+    .land-section h1{
+        margin-top: 0;
+    }
+    .land-container{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        row-gap: 15px;
+    }
+}
+
+
+/* banner */
+.home-banner{
+    display: flex;
+    background: #f7f7f7;
+}
+.home-banner.reverse{
+    flex-direction: row-reverse;
+}
+.home-banner img{
+    width: 50%;
+}
+.home-banner .banner-text{
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    text-align: start;
+}
+.banner-text h1{
+    margin: 0;
+}
+.banner-text a{
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0664e0;
+    color: #fff;
+    text-decoration: none;
+    margin:0 auto 0;
+    border-radius: 50px;
+}
+.banner-text a:hover{
+    background: #333;
+}
+@media (max-width:768px) {
+    .home-banner{
+        flex-direction: column !important;
+    }
+    .home-banner img{
+        width: 100%;
+        aspect-ratio: 2 !important;
+        object-fit: cover;
+        object-position: bottom;
+    }
+    .home-banner .banner-text{
+        padding: 50px 30px;
+    }
+}
+
+
+/* Province */
+.province-section{
+    padding-block: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.province-widget{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.province-widget.reverse{
+    flex-direction: column-reverse;
+}
+.province-item{
+    width: 100%;
+    overflow: hidden;
+}
+.province-item:first-child{
+    aspect-ratio: 5/6;
+}
+.province-item:last-child{
+    aspect-ratio: 3/2;
+}
+@media (max-width:768px) {
+    .province-item:first-child,
+    .province-item:last-child{
+        aspect-ratio: 3/2;
+    }
+    .province-section{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        padding-block: 50px;
+    }
+    .province-widget{
+        gap: 20px;
+        flex-direction: row !important;
+    }
+}
+@media (max-width:400px){
+    .province-widget{
+        flex-direction: column !important;
+    }
+}
