@@ -30,7 +30,7 @@
 }
 .modal-content{
     position: relative;
-    width: 100%;
+    width: 90%;
     max-width: 900px;
     height: 80%;
     background: white;
@@ -39,6 +39,7 @@
     opacity: 0;
     transform: translateY(-100%);
     transition: all 0.4s linear;
+    overflow: hidden;
 }
 .modal.open .modal-content{
     opacity: 1;
@@ -65,4 +66,14 @@
 .modal-close:hover{
     background: #b46060;
     color: white;
+}
+.modal-body{
+    padding: 30px 30px 50px;
+    height: calc(100% - 60px);
+    overflow-y: scroll  ;
+}
+@media (max-width:768px) {
+    .modal-body{
+        padding-inline: 15px;
+    }
 }

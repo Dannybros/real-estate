@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import { CiSearch } from "react-icons/ci";
 import { VscSettings } from "react-icons/vsc";
-import Pagination from './Pagination';
+import Pagination from '../../components/Pagination/Pagination';
 
 const Explore:React.FC=()=>{
   const { page } = useParams();

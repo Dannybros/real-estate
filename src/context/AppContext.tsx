@@ -11,11 +11,18 @@ export interface FilterType {
   status:string;
   priceRange: NumberRange;
   sizeRange: NumberRange;
+  yearRange: NumberRange;
   properties:string[];
   search:string;
   provinces:string | null;
   areas:string[];
   sort:string;
+  beds:number | null;
+  baths:number | null;
+  parking:number | null;
+  industry:string[];
+  land:string[];
+  features:string[];
 }
 
 interface MapType {
@@ -67,12 +74,20 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     status:"All",
     priceRange: { min: null, max: null },
     sizeRange: { min: null, max: null },
+    yearRange: { min: null, max: null },
     properties:[],
     search: '',
     provinces:null,
     areas:[],
-    sort:'Newest',
+    beds:null,
+    baths:null,
+    parking:null,
+    land:[],
+    industry:[],
+    features:[],
+    sort:'Newest'
   });
+  
   const updateFilters = (newFilters: Partial<FilterType>) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -95,7 +110,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     language,
     changeLang,
     map,
-    propertyTypes:["Apartment", 'Villa', 'Condominium', 'House', 'Townhouse', 'Office / Building', 'Land', 'Industria'],
+    propertyTypes:['Villa', 'Condominium', 'House', 'Shop', 'Commercial Building', 'Land', 'Industry'],
     propertyStatus:['All', 'Sale', 'Rent'],
     filters,
     updateFilters,

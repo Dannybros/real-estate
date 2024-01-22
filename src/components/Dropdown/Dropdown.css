@@ -102,8 +102,8 @@
 .price-lists h4{
     text-align: start;
 }
-.price-lists input{
-    width: 130px;
+.number-input{
+    width: 120px;
     padding: 10px;
     border: 1px solid rgb(186, 186, 186);
     outline: none;

@@ -113,33 +113,3 @@
     margin: 30px 0 10px;
     user-select: none;
 }
-
-
-/* pagination */
-.pagination{
-    display: flex;
-    justify-content: center;
-    padding: 50px 10px;
-    gap:10px;
-}
-.pagination button{
-    margin: 0;
-    border: none;
-    outline: none;
-    background: none;
-    display: grid;
-    place-items: center;
-    width: 50px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 14px;
-}
-.pagination button:disabled{
-    border: 2px solid rgb(0, 128, 255);
-    color: black;
-    background: #f4f4f4;
-}
-.pagination button:hover{
-    background: #f4f4f4;
-}

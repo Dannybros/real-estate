@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pagination.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronDoubleLeft, HiOutlineChevronDoubleRight } from "react-icons/hi";
 
@@ -57,6 +58,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
                     key={item}
                     onClick={() => handleClick(item)}
                     disabled={currentPage === item}
+                    className={`${currentPage === item && 'active'}`}
                 >
                     {item.toString()}
                 </button>

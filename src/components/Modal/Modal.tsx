@@ -23,7 +23,9 @@ const Modal=({children, title}:ModalProps)=> {
                 <div className='modal-close' onClick={toggleFilterModal}>
                     <IoMdClose/>
                 </div>
-                {children}
+                <div className='modal-body'>
+                    {children}
+                </div>
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ type NumberRangeProps = {
     filterKey:string;
 }
 
-function formatNumberWithCommas(value: number | null): string {
+export function formatNumberWithCommas(value: number | null): string {
     if (value === null) {
       return '';
     }
@@ -60,14 +60,14 @@ function NumberRangeDropdown({position="left", setNumberRange, filterKey, priceR
                         <div className='price-lists'>
                             <div className='price-list'>
                                 <h4>Minimum</h4>
-                                <input type="text" className='font-default' placeholder='No Min'
+                                <input type="text" className='font-default number-input' placeholder='No Min'
                                     value={formatNumberWithCommas(priceRange.min)}
                                     onChange={(e) => handleInputChange(e, 'min')}
                                 />
                             </div>
                             <div className='price-list'>
                                 <h4>Maximum</h4>
-                                <input type="text" className='font-default' placeholder='No Max'
+                                <input type="text" className='font-default number-input' placeholder='No Max'
                                     value={formatNumberWithCommas(priceRange.max)}
                                     onChange={(e) => handleInputChange(e, 'max')}
                                 />
