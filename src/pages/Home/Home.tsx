@@ -20,10 +20,6 @@ function Home() {
     ? Object.values(map)
     : map[filters.provinces]
     ).flat();
-  // const search_cities: string[] = (filters.provinces.length === 0
-  //   ? Object.values(map)
-  //   : filters.provinces.map((province) => map[province])
-  //   ).flat();
 
   const sliderNextClick = ()=>{
     if (sliderRef.current) {
@@ -100,14 +96,9 @@ function Home() {
             Searching for your ideal home or commercial property in the UAE shouldn't be a daunting experience. That's why we're here to assist you in finding the perfect property at the right price.
           </p>
           <div className='feature-card-wrapper'>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+            {Array.from({length:8}).map((_, i)=>(
+              <Card key={i} id={i}/>
+            ))}
           </div>
         </div>
       </section>
@@ -128,7 +119,7 @@ function Home() {
             <Slider ref={sliderRef} {...newPropertySliderSettings}>
               {Array.from({ length: 8 }).map((_, i)=>(
                 <div className='new-property-item' key={i}>
-                  <Card footer={false} btn={false}/>
+                  <Card footer={false} btn={false} id={i}/>
                 </div>
               ))}
             </Slider>

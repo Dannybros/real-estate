@@ -114,7 +114,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     propertyStatus:['All', 'Sale', 'Rent'],
     filters,
     updateFilters,
-    sortList:['Newest', 'Price (Lowest to Highest)', 'Price (Highest to Lowest)', 'Square Meter']
+    sortList:['Newest', 'Price Lowest', 'Price Highest', 'Square Meter']
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

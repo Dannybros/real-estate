@@ -10,12 +10,14 @@ import './Card.css'
 interface CardProps {
     footer?:boolean;
     btn?:boolean
+    side?:boolean
+    id:number
 }
 
-const Card:React.FC<CardProps>=({footer=true, btn=true})=>{
+const Card:React.FC<CardProps>=({footer=true, btn=true, side=false, id})=>{
   return (
-    <div className='card'>
-        <div className="card-wrapper">
+    <Link to={`/property/${id}`} className='card'>
+        <div className={`card-wrapper ${side && 'side'}`}>
             <div className='card-thumb'>
                 <img src="https://sevenstonesdxb.com/wp-content/uploads/2024/01/d081a587-ab01-11ee-9589-061f5a7c362a-592x444.png" alt="" />
                 <div className='card-price font-title'>
@@ -27,9 +29,9 @@ const Card:React.FC<CardProps>=({footer=true, btn=true})=>{
                 </div>
             </div>
             <div className='card-body'>
-                <Link to="/" className='truncate'>
+                <div className='truncate'>
                     Luxurious Living | Prime Location | Resale with PP
-                </Link>
+                </div>
                 <address className='font-small truncate'>
                     Dubai, Downtown Dubai, Burj Khalifa Area, The Residence | Burj Khalifa
                 </address>
@@ -54,17 +56,17 @@ const Card:React.FC<CardProps>=({footer=true, btn=true})=>{
                                 <TfiRulerAlt2 className='card-info-icon'/>
                                 <span>550</span>
                             </div>
-                            <p>Sq - m</p>
+                            <p>Sq / m²</p>
                         </li>
                     </ul>
-                    <div className='card-info-list' style={{marginBottom:btn? "10px" : "0px"}}>
+                    <div className='card-info-list'>
                         <div className='card-type' style={{margin:btn? "0" : "auto"}}>
                             ( Apartment ) 
                         </div>
                         {btn &&
-                            <a href="#" className='card-detail-btn'>
+                            <div className='card-detail-btn'>
                                 Details
-                            </a>
+                            </div>
                         }
                     </div>
                 </div>
@@ -83,7 +85,7 @@ const Card:React.FC<CardProps>=({footer=true, btn=true})=>{
                 </>}
             </div>
         </div>
-    </div>
+    </Link>
   )
 }
 

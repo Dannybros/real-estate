@@ -1,0 +1,84 @@
+.image-viewer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 200;
+}
+.viewer-header{
+    position: relative;
+    color: white;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    padding: 0px 50px;
+    display: flex;
+    height: 68px;
+    justify-content: space-between;
+}
+.viewer-header ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+.viewer-header li{
+    margin: 0;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.viewer-header li.active{
+    border-bottom: 4px solid rgb(201, 24, 201);
+}
+.close-viewer{
+    margin-inline: 0px;
+    margin-block: auto;
+    cursor: pointer;
+}
+.img-viewer-container{
+    width: 100%;
+    height: calc(100% - 68px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.img-view-list{
+    width: 90%;
+    padding-block: 10px;
+}
+.img-slider-btn{
+    position: absolute;
+    width: 90%;
+    height: calc(100dvh - 150px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 150;
+    padding-inline: 10px;
+}
+.viewer-btn{
+    width: 50px;
+    margin: 0;
+    aspect-ratio: 1;
+    padding: 15px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: grid;
+    place-items: center;
+}
+.viewer-btn:hover{
+    background: white;
+    
+}
+.img-view-item{
+    padding-inline: 10px;
+}
+.img-view-item img{
+   width: 100%;
+   height: calc(100dvh - 150px);
+   object-fit: contain;
+}
