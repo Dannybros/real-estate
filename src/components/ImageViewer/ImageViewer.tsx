@@ -1,74 +1,123 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import './ImageViewer.css'
 import { IoIosClose } from "react-icons/io";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Slider from "react-slick";
 
-const settings = {
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 1,
-    arrows:false
-};
+interface ImageViewerProps {
+    imgs:string[];
+    viewImgIndex:number,
+    setViewImgIndex:React.Dispatch<React.SetStateAction<number>>
+}
 
-const ImageViewer:React.FC=()=> {
+interface MediaProps extends ImageViewerProps{
+    toggleImgView: () => void;
+}
+
+const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgIndex})=>{
     const imgSliderRef = useRef<Slider>(null);
 
     const sliderNextClick = ()=>{
         if (imgSliderRef.current) {
+
             imgSliderRef.current.slickNext();
+
+            if(viewImgIndex >=imgs.length){
+                setViewImgIndex(1)
+            }else{
+                setViewImgIndex(viewImgIndex+1)
+            }
         }
     }
+
     const sliderPreviousClick = () => {
-        if (imgSliderRef.current) {
+        if(imgSliderRef.current){
+
             imgSliderRef.current.slickPrev();
+
+            if(viewImgIndex <= 1){
+                setViewImgIndex(imgs.length)
+            }else{
+                setViewImgIndex(viewImgIndex-1)
+            }
         }
+
     };
-    
-    
-  return (
+ 
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows:false,
+        initialSlide: viewImgIndex,
+    };
+
+    return(
+        <div className='picture-container'>
+            <div className='img-number font-title'>
+                {viewImgIndex + 1} of {imgs.length}
+            </div>
+            <div className='img-slider-btn'>
+                <span className='viewer-btn' onClick={sliderPreviousClick}>
+                    <FaChevronLeft/>
+                </span>
+                <span className='viewer-btn' onClick={sliderNextClick}>
+                    <FaChevronRight/>
+                </span>
+            </div>
+            <Slider {...settings} ref={imgSliderRef}>
+                {imgs.map((img, i)=>(
+                    <div className='img-view-item' key={i}>
+                        <img src={img} alt="" />
+                    </div>
+                ))}
+            </Slider>
+        </div>
+    )
+}
+
+const VdoViewer:React.FC = () =>{
+   
+    return(
+       <div className='vdo-container'>
+        <iframe className='property-vdo' src="https://www.youtube.com/embed/cXyxwp39S1I" title="MAXHUB V5 Interactive Flat Panel Officially Launched" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+
+       </div>
+    )
+}
+
+const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, viewImgIndex, setViewImgIndex})=> {
+    const [activeTab, setActiveTab] = useState<string>('Pic');
+  
+    return (
     <div className='image-viewer'>
         <div className='viewer-header'>
             <ul className='font-title'>
-                <li className='active'>Pictures</li>
-                <li>Videos</li>
+                <li 
+                    className={`${activeTab==="Pic" && 'active'}`}
+                    onClick={()=>setActiveTab("Pic")}
+                >
+                    Pictures
+                </li>
+                <li 
+                    className={`${activeTab==="Vdo" && 'active'}`}
+                    onClick={()=>setActiveTab("Vdo")}
+                >
+                    Videos
+                </li>
             </ul>
-            <IoIosClose className="close-viewer font-header"/>
+            <IoIosClose className="close-viewer" onClick={toggleImgView}/>
         </div>
-        <div className='img-viewer-container'>
-            <div className='img-view-list'>
-                <div className='img-slider-btn'>
-                    <span className='viewer-btn' onClick={sliderPreviousClick}>
-                        <FaChevronLeft/>
-                    </span>
-                    <span className='viewer-btn' onClick={sliderNextClick}>
-                        <FaChevronRight/>
-                    </span>
-                </div>
-                <Slider {...settings} ref={imgSliderRef}>
-                    <div className='img-view-item'>
-                        <img src="https://photos.zillowstatic.com/fp/586948ae371f15d6ff8b5ae6742b22ee-uncropped_scaled_within_1536_1152.webp" alt="" />
-                    </div>
-                    <div className='img-view-item'>
-                        <img src="https://photos.zillowstatic.com/fp/02899d22e6277228156088332d9a24d1-uncropped_scaled_within_1536_1152.webp" alt="" />
-                    </div>
-                    <div className='img-view-item'>
-                        <img src="https://photos.zillowstatic.com/fp/ab442adbf0598fd38a76c4a47798354d-uncropped_scaled_within_1536_1152.webp" alt="" />
-                    </div>
-                    <div className='img-view-item'>
-                        <img src="https://photos.zillowstatic.com/fp/7c87b87eabbe739c3cfea3ce90f16e81-uncropped_scaled_within_1536_1152.webp" alt="" />
-                    </div>
-                    <div className='img-view-item'>
-                        <img src="https://photos.zillowstatic.com/fp/23b2c6b98887bfe47caa01058b5a53a8-uncropped_scaled_within_1536_1152.webp" alt="" />
-                    </div>
-                    <div className='img-view-item'>
-                        <img src="https://photos.zillowstatic.com/fp/6340a29570ecb6797bde3f9f0ecf49f5-uncropped_scaled_within_1536_1152.webp" alt="" />
-                    </div>
-                </Slider>
-            </div>
-        </div>
+        {activeTab==="Pic" &&
+            <ImageViewer imgs={imgs} setViewImgIndex={setViewImgIndex} viewImgIndex={viewImgIndex}/>
+        }
+        {activeTab==="Vdo" &&
+            <VdoViewer/>
+        }
     </div>
   )
 }
 
-export default ImageViewer
+export default MediaViewer

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
-import { FaWalking, FaCar, FaPhoneAlt } from "react-icons/fa";
+import { FaWalking, FaCar } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import './Detail.css'
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
-import ImageViewer from '../../components/ImageViewer/ImageViewer';
+import MediaViewer from '../../components/ImageViewer/ImageViewer';
 
 const surroundings = [
   {
@@ -124,21 +124,35 @@ const interiors = [
   },
 ]
 
+const imgs=[
+  "https://photos.zillowstatic.com/fp/586948ae371f15d6ff8b5ae6742b22ee-uncropped_scaled_within_1536_1152.webp",
+  "https://photos.zillowstatic.com/fp/02899d22e6277228156088332d9a24d1-uncropped_scaled_within_1536_1152.webp",
+  "https://photos.zillowstatic.com/fp/ab442adbf0598fd38a76c4a47798354d-uncropped_scaled_within_1536_1152.webp",
+  "https://photos.zillowstatic.com/fp/7c87b87eabbe739c3cfea3ce90f16e81-uncropped_scaled_within_1536_1152.webp",
+  "https://photos.zillowstatic.com/fp/23b2c6b98887bfe47caa01058b5a53a8-uncropped_scaled_within_1536_1152.webp",
+  "https://photos.zillowstatic.com/fp/6340a29570ecb6797bde3f9f0ecf49f5-uncropped_scaled_within_1536_1152.webp",
+  "https://photos.zillowstatic.com/fp/c4e6d0b63197af27d37d94e5f29cef0f-uncropped_scaled_within_1536_1152.webp"
+]
+
+const floorImg=["https://e7.pngegg.com/pngimages/647/669/png-clipart-house-plan-floor-plan-architecture-house-angle-building-thumbnail.png"]
+
 function Detail() {
 
   const [shortenDetail, setShortenDetail] = useState<boolean>(false);
   const [columns, setColumns] = useState<number>(3);
-  const [imgLength, setImgLength] = useState<number>(1);
+  const [isImgViewOpen, setIsImgViewOpen] = useState<boolean>(false);
+  const [imgLength, setImgLength] = useState<number>(7);
+  const [viewImgIndex, setViewImgIndex] = useState<number>(1);
 
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-
-      if(screenWidth <=500){
+      
+      if (screenWidth <= 500) {
         setImgLength(1);
-      }else if(screenWidth <=768){
+      } else if (screenWidth <= 768) {
         setImgLength(5);
-      }else{
+      } else {
         setImgLength(7);
       }
 
@@ -150,10 +164,14 @@ function Detail() {
         setColumns(3);
       }
     };
+
+    handleResize();
+
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('load', handleResize);
     };
   }, []);
 
@@ -169,13 +187,24 @@ function Detail() {
     setShortenDetail(!shortenDetail);
   }
 
+  const toggleImgView = () =>{
+    setIsImgViewOpen(!isImgViewOpen);
+  }
+  
+  const handleImgClick=(index:number)=>{
+    setViewImgIndex(index);
+    toggleImgView();
+  }
+
+  const allImg = [...imgs, ...floorImg];
+
   return (
     <div className='detail-page'>
       <div className='container'>
         <div className='property-img-gallery'>
           {Array.from({length:imgLength}).map((_, i)=>(
-            <div className='img-item' key={i}>
-              <img src="https://photos.zillowstatic.com/fp/560ba9ed44f79663a696f52aa8662490-cc_ft_960.webp" alt=""/>
+            <div className='img-item' key={i} onClick={()=>handleImgClick(i)}>
+              <img src={imgs[i]} alt=""/>
             </div>
           ))}
           <div className='btn-all-photo'>View all 17 photos</div>
@@ -237,7 +266,7 @@ function Detail() {
             </div>
             <div className='property-map'>
               <h2>Map (Location)</h2>
-              <iframe className="location-map" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d948.783658138597!2d102.5789444!3d17.9724722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDU4JzIwLjkiTiAxMDLCsDM0JzQ0LjIiRQ!5e0!3m2!1sen!2sla!4v1702266280334!5m2!1sen!2sla" loading="lazy" allowFullScreen></iframe>
+              <iframe className="location-map" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d948.783658138597!2d102.5789444!3d17.9724722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDU4JzIwLjkiTiAxMDLCsDM0JzQ0LjIiRQ!5e0!3m2!1sen!2sla!4v1702266280334!5m2!1sen!2sla&callback=Function.prototype" loading="lazy" allowFullScreen></iframe>
             </div>
             <div className='property-features'>
               <h2>Features</h2>
@@ -245,7 +274,10 @@ function Detail() {
                 <div className='property-feature-title'>
                   Floor Plan
                 </div>
-                <img src="https://e7.pngegg.com/pngimages/647/669/png-clipart-house-plan-floor-plan-architecture-house-angle-building-thumbnail.png" alt="" />
+                <img 
+                  src={floorImg[0]} alt="" 
+                  onClick={()=>handleImgClick(imgLength)}
+                />
               </div>
               <div className='feature-item-box interior'>
                 <div className='property-feature-title'>
@@ -318,7 +350,13 @@ function Detail() {
           </div>
         </div>
       </div>
-      <ImageViewer/>
+      {isImgViewOpen && 
+        <MediaViewer 
+          toggleImgView={toggleImgView} imgs={allImg} 
+          viewImgIndex={viewImgIndex}
+          setViewImgIndex={setViewImgIndex}
+        />
+      }
     </div>
   )
 }

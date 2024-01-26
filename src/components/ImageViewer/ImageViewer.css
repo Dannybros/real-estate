@@ -35,50 +35,98 @@
     margin-inline: 0px;
     margin-block: auto;
     cursor: pointer;
+    font-size: 40px;
 }
-.img-viewer-container{
-    width: 100%;
-    height: calc(100% - 68px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.picture-container{
     position: relative;
-}
-.img-view-list{
     width: 90%;
-    padding-block: 10px;
+}
+.img-number{
+    position: absolute;
+    top: 50px;
+    left:50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    z-index: 200;
+    user-select: none;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.7);
 }
 .img-slider-btn{
     position: absolute;
-    width: 90%;
-    height: calc(100dvh - 150px);
+    width: 100%;
+    height: calc(100dvh - 100px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 150;
     padding-inline: 10px;
 }
 .viewer-btn{
     width: 50px;
+    height: 50px;
     margin: 0;
-    aspect-ratio: 1;
-    padding: 15px;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.viewer-btn:hover{
+    background: white;   
+}
+
+.img-view-item{
+    width: 100%;
+    height: calc(100dvh - 80px);
+    display: flex;
+    align-items: center;
+    padding-block: 40px;
+}
+.img-view-item img{ 
+    height: 100%;
+    object-fit: contain;
+}
+@media (max-width:500px) {
+    .viewer-header{
+        padding-inline: 10px;
+        height: 50px;
+    }
+    .viewer-header li{
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+    .img-slider-btn{
+        width: 100%;
+    }
+    .viewer-btn{
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.6) !important;
+    }
+}
+
+.vdo-container{
+    width: 100%;
+    height: calc(100% - 70px);
     display: grid;
     place-items: center;
 }
-.viewer-btn:hover{
-    background: white;
-    
+.property-vdo{
+    height: 80%;
+    aspect-ratio: 16 /9;
 }
-.img-view-item{
-    padding-inline: 10px;
-}
-.img-view-item img{
-   width: 100%;
-   height: calc(100dvh - 150px);
-   object-fit: contain;
+@media (max-width:768px) {
+    .property-vdo{
+        width: 90%;
+        height: auto;
+    }
 }

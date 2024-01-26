@@ -1,6 +1,8 @@
 import { useState, useEffect} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CiMenuKebab } from "react-icons/ci";
+import { FaUser } from "react-icons/fa";
+import { GrLanguage } from "react-icons/gr";
 import './Nav.css';
 
 function Nav() {
@@ -30,7 +32,7 @@ function Nav() {
   return (
     <>
     <nav className={(isHomePage && !showColor) ? 'nav transparent-wrap' : 'nav'}> 
-      <div className="navbar">
+      <div className="navbar container">
         <div className='sidebar-icon' onClick={toggleShowMobileMenu}>
           <CiMenuKebab/>
         </div>
@@ -64,6 +66,16 @@ function Nav() {
               </ul>
             </li>
           </ul>
+          <div className='nav-local-auth'>
+            <div className='nav-locale'>
+              <GrLanguage/>
+              Language
+            </div>
+            <div className='sign-in'>
+              <FaUser/>
+              Sign In
+            </div>
+          </div>
         </div>
       </div>
     </nav>

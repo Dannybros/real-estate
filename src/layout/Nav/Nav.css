@@ -19,8 +19,6 @@
 }
 .navbar{
     display: flex;
-    max-width: 1100px;
-    padding-inline:40px ;
     height: 100%;
     flex-wrap: wrap;
     align-items: center;
@@ -37,6 +35,7 @@
     display: flex;
     height: 100%;
     justify-content: end;
+    gap: 40px;
 }
 .main-menu{
     display: flex;
@@ -93,6 +92,26 @@
 .dropdown-menu li:hover{
     background: rgba(152, 234, 255, 0.521);
 }
+.nav-local-auth{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.sign-in,
+.nav-locale{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.sign-in:hover{
+    color: rgb(0, 128, 255);
+}
+
 
 /* sidebar mobile */
 .sidebar-icon{
