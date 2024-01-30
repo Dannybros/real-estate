@@ -1,4 +1,5 @@
 import Animation from '../../components/Animation/Animation';
+import { ModalContainerProps } from '../../components/Map/Map';
 import Modal from '../../components/Modal/Modal'
 import {NumberRange, useAppContext } from '../../context/AppContext'
 import './FilterModal.css'
@@ -9,7 +10,7 @@ const IndustryTypes = ["Factor", "Mines"]
 const Features = ["Private Pool", "Basement", "Roof", "Fireplace", "Hardwood Floors", 
 "Gardens"]
 
-function FilterModal() {
+function FilterModal({type}:ModalContainerProps) {
   const {propertyTypes, propertyStatus, filters, updateFilters} = useAppContext();
 
   const handleInfoChange= (
@@ -41,7 +42,7 @@ function FilterModal() {
   }
 
   return (
-    <Modal title='All Filters'>
+    <Modal title='All Filters' rightModal={type==="Setting"}>
       <div className='filter-toolbox'>
         <div className='filter-status'>
           <ul className='filter-status-list'>

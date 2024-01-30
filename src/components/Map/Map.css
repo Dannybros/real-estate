@@ -1,0 +1,89 @@
+.map-location{
+    margin-bottom: 20px;
+}
+.interactive-map{
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    background: rgb(198, 174, 238);
+    overflow: hidden;
+}
+.interactive-map h2{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    color: white;
+}
+.map-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s linear;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+}
+.map-container.zoom-in{
+    transform: scale(1.5);
+    filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+}
+.map-container.zoom-out{
+    transform: scale(0.1);
+    filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+}
+.province-map{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+#LAVT{
+    fill: rgb(201, 69, 49);
+}
+.county-map{
+    height: 95%;
+    width: 100%;
+    cursor: pointer;
+}
+.county{
+    stroke: #000;
+    fill: #FEFEE9;
+    stroke-width: 3px;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.province-map .county{
+    stroke-width:0.5;
+}
+.county:hover{
+    fill: rgb(100, 212, 148) !important;
+}
+.county-name{
+    font-size: 35px;
+    font-family:'MyriadPro-Regular';
+}
+.county-indicator{
+    fill:none;
+    stroke:#000000;
+    stroke-miterlimit:10;
+}
+.btn_provinceMap{
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    color: white;
+    cursor: pointer;
+    padding:5px 10px;
+    display: grid;
+    place-items: center;
+}
+.btn_provinceMap:hover{
+    background: rgba(255, 255, 255, 0.118);
+}

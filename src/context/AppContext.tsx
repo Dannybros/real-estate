@@ -14,7 +14,7 @@ export interface FilterType {
   yearRange: NumberRange;
   properties:string[];
   search:string;
-  provinces:string | null;
+  province:string | null;
   areas:string[];
   sort:string;
   beds:number | null;
@@ -77,7 +77,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     yearRange: { min: null, max: null },
     properties:[],
     search: '',
-    provinces:null,
+    province:null,
     areas:[],
     beds:null,
     baths:null,
@@ -98,10 +98,18 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   // map
   const map:MapType={
-    Bokeo:['a', 'b', 'c'],
-    Vientiane:['d', 'e', 'f'],
-    Phonsaly:['g', 'h', 'i'],
-    test:['dd', 'ee', 'ff'],
+    Vientiane:['Chanthabuly', 'Sikhottabong', 'Xaythany', 'Naxaithong', 'Sangthong', 'Xaysetha', 'Sikhottabong', 'Sisattanak', 'Mayparkngum', 'Hadxayfong'],
+    Phonsaly:['Khoua', 'Samphanh', 'Boun Neua', 'Phongsaly', 'May', 'Yot Ou', 'Boun Tay'],
+    LuangNamtha:['Viengphoukha', 'Namtha', 'Sing', 'Long', 'Na Le'],
+    Oudomxay:['Beng', 'Nga', 'Houne', 'Xay', 'Na Mo', 'La', 'Pak Beng'],
+    Bokeo:['Pak Tha', 'Houayxay', 'Meung', 'Ton Pheung', 'Pha Oudom'],
+    LuangPrabang:['Pak Seng', 'Ngoy', 'Xiengngeun', 'Phonxay', 'Chomphet', 'Luang Prabang', 'Nam Bak', 'Pak Ou', 'Phoukhoune', 'Phonthong', 'Viengkham'],
+    Houaphan:["Viengxay", 'Houameuang', 'Xam Neua', 'Hiam', 'Xiengkho', 'Et', 'Samtay', 'Xon', 'Kone', 'Sop Bao'],
+    Xayabury:['Sainyabuli', 'Khop', 'Hongsa', 'Ngeun', 'Xienghone', 'Phiang', 'Parklai', 'Kenethao', 'Botene', 'Thongmyxay', 'Xaisathan'],
+    Xiengkhouang :['Nong Het', 'Kham', 'Phonsavan', 'Mok May', 'Khoune', 'Phaxay', 'Phou Kout'],
+    VientianeProvince:['Vangvieng', 'Thoulakhom', 'Phonhong', 'Keo Oudom', 'Kasy', 'Hinhurp', 'Xanakharm', 'Feuang', 'Mad', 'Viengkham'],
+    Bolikhamxai:["Khamkeut", 'Pakkading', 'Thaphabat', 'Viengthong', 'Borikhane', 'Pakxan', 'Xaichamphon'],
+    Attapeu:['Samakhixay', 'Sanxay', 'Saysetha', 'Sanamxay', 'Phouvong']
   }
 
   const contextValue: AppContextType = {

@@ -68,7 +68,7 @@
     color: white;
 }
 .modal-body{
-    padding: 30px 30px 50px;
+    padding: 30px;
     height: calc(100% - 60px);
     overflow-y: scroll  ;
 }

@@ -71,7 +71,7 @@
     width: auto;
     padding-inline: 10px;
 }
-.filter-modal-btn svg{
+.filter-modal-btn:first-child svg{
     transform: rotate(90deg);
     font-size: 20px;
 }

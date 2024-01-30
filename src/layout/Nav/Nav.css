@@ -7,6 +7,7 @@
     z-index: 200;
     transition: all 0.3s ease-in;
     border-bottom: 1px solid rgb(194, 194, 194);
+    box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px;
 }
 .nav-text-style{
     font-weight: 500;
@@ -16,6 +17,7 @@
     background: transparent;
     border-bottom: none;
     color: white;
+    box-shadow: none;
 }
 .navbar{
     display: flex;
@@ -27,6 +29,9 @@
 .logo{
     flex: 0;
 }
+.nav.transparent-wrap .logo img{
+    filter: invert(1);
+}
 .logo img{
     height: 50px;
 }
@@ -36,6 +41,10 @@
     height: 100%;
     justify-content: end;
     gap: 40px;
+}
+.nav-menu.end{
+    margin-left: 30px;
+    justify-content: start !important;
 }
 .main-menu{
     display: flex;
@@ -50,12 +59,15 @@
     color: white;
 }
 .nav-link{
-    padding-inline: 10px;
+    padding-inline: 5px;
     position: relative;
     height: 100%;
-    width: 90px;
-    display: grid;
-    place-items: center;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     cursor: pointer;
 }
 .nav.transparent-wrap .nav-link:hover{
@@ -82,11 +94,12 @@
     opacity: 0;
     visibility: hidden;
     width: 150px;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
 }
 
 .dropdown-menu li{
-    padding: 10px 15px;
+    padding: 8px 15px;
     border-bottom: 1px solid rgb(230, 229, 229);
 }
 .dropdown-menu li:hover{
@@ -96,7 +109,7 @@
     margin: 0;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 .sign-in,
 .nav-locale{
@@ -107,9 +120,41 @@
     gap: 5px;
     cursor: pointer;
     text-align: center;
+    padding-inline: 10px;
+    height: 100%;
 }
 .sign-in:hover{
-    color: rgb(0, 128, 255);
+    color: rgb(14, 125, 243);
+}
+.user-name{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    background: green;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.test{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%
+}
+.lang-list{
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+.lang-list li{
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.lang-list li.active{
+    background: #00000025;
 }
 
 

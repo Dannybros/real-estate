@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Explore from './pages/Explore/Explore';
 import { useAppContext } from './context/AppContext';
 import Detail from './pages/Detail/Detail';
-import FilterModal from './pages/Explore/FilterModal';
+import About from './pages/About/About';
 
 function App() {
   const {isFilterModalOpen} = useAppContext();
@@ -26,8 +26,8 @@ function App() {
           <Route path="/explore" element={<RedirectToExplorePage/>} />
           <Route path="/explore/page/:page" element={<Explore />} />
           <Route path='/property/:id' element={<Detail/>}/>
+          <Route path='/about' element={<About/>}/>
         </Routes>
-        <FilterModal/>
         <Footer/>
       </BrowserRouter >
     </div>

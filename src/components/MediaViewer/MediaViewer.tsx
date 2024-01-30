@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react'
-import './ImageViewer.css'
+import React, {useRef} from 'react'
+import './MediaViewer.css'
 import { IoIosClose } from "react-icons/io";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Slider from "react-slick";
@@ -12,6 +12,8 @@ interface ImageViewerProps {
 
 interface MediaProps extends ImageViewerProps{
     toggleImgView: () => void;
+    activeTab:string,
+    setActiveTab:React.Dispatch<React.SetStateAction<string>>
 }
 
 const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgIndex})=>{
@@ -79,7 +81,6 @@ const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgInd
 }
 
 const VdoViewer:React.FC = () =>{
-   
     return(
        <div className='vdo-container'>
         <iframe className='property-vdo' src="https://www.youtube.com/embed/cXyxwp39S1I" title="MAXHUB V5 Interactive Flat Panel Officially Launched" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
@@ -88,8 +89,7 @@ const VdoViewer:React.FC = () =>{
     )
 }
 
-const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, viewImgIndex, setViewImgIndex})=> {
-    const [activeTab, setActiveTab] = useState<string>('Pic');
+const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, viewImgIndex, setViewImgIndex, activeTab, setActiveTab})=> {
   
     return (
     <div className='image-viewer'>

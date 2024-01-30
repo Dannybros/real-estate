@@ -12,7 +12,7 @@
 .hero-element{
     height: 100dvh;
     margin-top: -80px;
-    background-image: url(https://sevenstonesdxb.com/wp-content/uploads/2023/02/Vida-scaled-2.jpg);
+    background-image: url('../../assest/hero.jpg');
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
@@ -238,6 +238,10 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 5px;
 }
+.land-container .land-item:first-child .land-item-body{
+    justify-content: space-between;
+    padding-block: 18px;
+}
 @media (max-width:1100px) {
     .land-container{
         grid-template-columns: repeat(3, 1fr);
@@ -260,7 +264,7 @@
 /* banner */
 .home-banner{
     display: flex;
-    background: #f7f7f7;
+    background: #e5e5e560;
 }
 .home-banner.reverse{
     flex-direction: row-reverse;

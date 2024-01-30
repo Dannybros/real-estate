@@ -6,15 +6,16 @@ import { useAppContext } from '../../context/AppContext';
 interface ModalProps{
     children: ReactNode;
     title: string;
+    rightModal:boolean
 }
 
-const Modal=({children, title}:ModalProps)=> {
+const Modal=({children, title, rightModal}:ModalProps)=> {
 
     const {isFilterModalOpen, toggleFilterModal} = useAppContext();
 
     return (
         
-        <div className={`modal ${isFilterModalOpen && 'open'}`}>
+        <div className={`modal ${rightModal && isFilterModalOpen && 'open'}`}>
             <div className='modal-overlay' onClick={toggleFilterModal}/>
             <div className="modal-content">
                 <div className='modal-header font-subheader'>

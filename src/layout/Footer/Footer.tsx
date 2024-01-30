@@ -8,6 +8,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { GoChevronRight } from "react-icons/go";
 import { IoLogoWechat } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+import logo from "../../assest/logo.svg";
 
 const Footer:React.FC=()=> {
   return (
@@ -16,7 +17,7 @@ const Footer:React.FC=()=> {
         <div className='footer-wrapper'>
           <main className='footer-widget'>
             <div className='footer-icon'>
-              <img src="https://sevenstonesdxb.com/wp-content/uploads/2023/02/logo-01.svg" alt="" />
+              <img src={logo} alt="" />
             </div>
             <div className='footer-desc'>
               MAXHUB's interactive panels redefine collaboration in both professional and educational spheres. We showcase not just devices but gateways to seamless communication and dynamic engagement. Our mission is to unlock collaborative possibilities, enabling teams and classrooms to connect effortlessly, whether across the room or across the globe.

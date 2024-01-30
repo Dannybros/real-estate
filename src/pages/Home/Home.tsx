@@ -7,8 +7,8 @@ import Dropdown from '../../components/Dropdown/Dropdown'
 import Card from '../../components/Card/Card';
 import Land from '../../components/Card/Land';
 import Province from '../../components/Province/Province';
-import './Home.css'
 import { useAppContext } from '../../context/AppContext';
+import './Home.css'
 
 function Home() {
 
@@ -16,9 +16,9 @@ function Home() {
   const {updateFilters, filters, map, propertyTypes, propertyStatus} = useAppContext();
 
   const search_provinces: string[] = Object.keys(map);
-  const search_cities: string[] = (filters.provinces=== null
+  const search_cities: string[] = (filters.province=== null
     ? Object.values(map)
-    : map[filters.provinces]
+    : map[filters.province]
     ).flat();
 
   const sliderNextClick = ()=>{
@@ -62,7 +62,7 @@ function Home() {
               <div className='search-form'>
                 <div className='search-fields-box'>
                   <div className="search-field">
-                    <Dropdown setSelection={updateFilters} selection={filters.provinces} items={search_provinces} filterKey="provinces"/>
+                    <Dropdown setSelection={updateFilters} selection={filters.province} items={search_provinces} filterKey="provinces"/>
                   </div>
                   <div className="search-field">
                     <Dropdown setSelection={updateFilters} selection={filters.areas} items={search_cities} filterKey="areas" multiSelect={true}/>
@@ -128,7 +128,7 @@ function Home() {
       </section>
       <section className="land-section section-padding">
         <div className='container'>
-          <h1>Our Exclusive Villas</h1>
+          <h1>Variety Lands</h1>
           <div className='land-container'>
             {Array.from({length: 7}).map((_, i)=>(
               <Land key={i} imgUrl={`https://picsum.photos/id/${10+i}/800/500`}/>

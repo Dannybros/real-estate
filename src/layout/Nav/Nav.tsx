@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { CiMenuKebab } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
+import logo from "../../assest/logo.svg";
 import './Nav.css';
 
 function Nav() {
@@ -29,6 +30,9 @@ function Nav() {
 
   const isHomePage = location.pathname === '/' ? true : false;
 
+  const test = false;
+  const user = false;
+
   return (
     <>
     <nav className={(isHomePage && !showColor) ? 'nav transparent-wrap' : 'nav'}> 
@@ -38,10 +42,10 @@ function Nav() {
         </div>
         <div className="logo">
           <Link to='/'>
-          <img src="https://sevenstonesdxb.com/wp-content/uploads/2023/02/logo-01.svg" width="127px" alt="logo"/>
+          <img src={logo} width="127px" alt="logo"/>
           </Link>
         </div>
-        <div className="nav-menu">
+        <div className={`nav-menu ${test && 'end'}`}>
           <ul className='main-menu'>
             <Link to='/'>
               <li className='nav-link'> Home </li>
@@ -55,28 +59,57 @@ function Nav() {
             <Link to='/explore'>
               <li className='nav-link'> Sell </li>
             </Link>
-            <li className='nav-link dropdown'>
-              <span>
-                About Us
-              </span>
-              <ul className='dropdown-menu'>
-                <li>Our Story</li>
-                <li>Our Team</li>
-                <li>Contact</li>
-              </ul>
-            </li>
+            <Link to='/about'>
+              <li className='nav-link'> About Us </li>
+            </Link>
           </ul>
-          <div className='nav-local-auth'>
-            <div className='nav-locale'>
-              <GrLanguage/>
-              Language
+          {!test &&
+            <div className='nav-local-auth'>
+              <div className='nav-link dropdown'>
+                <GrLanguage/>
+                Language
+                <ul className='dropdown-menu'>
+                  <li>English</li>
+                  <li>Chinese</li>
+                  <li>Korean</li>
+                  <li>Lao</li>
+                </ul>
+              </div>
+              {user?
+                <div className='nav-link dropdown'>
+                  <div className='user-name'>
+                    DL
+                  </div>
+                  <ul className='dropdown-menu'>
+                    <li>English</li>
+                    <li>Chinese</li>
+                    <li>Korean</li>
+                    <li>Lao</li>
+                  </ul>
+                </div>
+                :
+                <div className='nav-link sign-in'>
+                  <FaUser/>
+                  Sign In
+                </div>
+              }
             </div>
-            <div className='sign-in'>
+          }
+        </div>
+        {test&&
+          <div className='test'>
+            <div className='lang-list'>
+              <li className='active'>English</li>
+              <li>Chinese</li>
+              <li>Korean</li>
+              <li>Lao</li>
+            </div>
+            <div className='nav-link sign-in'>
               <FaUser/>
               Sign In
             </div>
           </div>
-        </div>
+        }
       </div>
     </nav>
 

@@ -5,7 +5,7 @@ import { CiHeart } from "react-icons/ci";
 import './Detail.css'
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
-import MediaViewer from '../../components/ImageViewer/ImageViewer';
+import MediaViewer from '../../components/MediaViewer/MediaViewer';
 
 const surroundings = [
   {
@@ -143,6 +143,7 @@ function Detail() {
   const [isImgViewOpen, setIsImgViewOpen] = useState<boolean>(false);
   const [imgLength, setImgLength] = useState<number>(7);
   const [viewImgIndex, setViewImgIndex] = useState<number>(1);
+  const [mediaActiveTab, setMediaActiveTab] = useState<string>("Pic");
 
   useEffect(() => {
     const handleResize = () => {
@@ -192,7 +193,13 @@ function Detail() {
   }
   
   const handleImgClick=(index:number)=>{
+    setMediaActiveTab("Pic")
     setViewImgIndex(index);
+    toggleImgView();
+  }
+
+  const handleVdoClick = ()=>{
+    setMediaActiveTab("Vdo")
     toggleImgView();
   }
 
@@ -207,8 +214,8 @@ function Detail() {
               <img src={imgs[i]} alt=""/>
             </div>
           ))}
-          <div className='btn-all-photo'>View all 17 photos</div>
-          <div className='btn-vdo'>View 3D Tour</div>
+          <div className='btn-all-photo' onClick={()=>handleImgClick(0)}>View all {allImg.length} photos</div>
+          <div className='btn-vdo' onClick={handleVdoClick}>View Video</div>
         </div>
         <div className='property-info'>
           <div className='property-profile'>
@@ -352,7 +359,10 @@ function Detail() {
       </div>
       {isImgViewOpen && 
         <MediaViewer 
-          toggleImgView={toggleImgView} imgs={allImg} 
+          toggleImgView={toggleImgView} 
+          imgs={allImg}
+          activeTab={mediaActiveTab} 
+          setActiveTab={setMediaActiveTab}
           viewImgIndex={viewImgIndex}
           setViewImgIndex={setViewImgIndex}
         />

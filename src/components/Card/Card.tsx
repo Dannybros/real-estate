@@ -5,6 +5,7 @@ import { TfiRulerAlt2 } from "react-icons/tfi";
 import { LiaBathSolid } from "react-icons/lia";
 import { IoBedOutline } from "react-icons/io5";
 import { GoPaperclip } from "react-icons/go";
+import card from "../../assest/card.png";
 import './Card.css'
 
 interface CardProps {
@@ -19,7 +20,7 @@ const Card:React.FC<CardProps>=({footer=true, btn=true, side=false, id})=>{
     <Link to={`/property/${id}`} className='card'>
         <div className={`card-wrapper ${side && 'side'}`}>
             <div className='card-thumb'>
-                <img src="https://sevenstonesdxb.com/wp-content/uploads/2024/01/d081a587-ab01-11ee-9589-061f5a7c362a-592x444.png" alt="" />
+                <img src={card} alt="" />
                 <div className='card-price font-title'>
                     20,000,000 $
                 </div>

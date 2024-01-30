@@ -15,7 +15,7 @@ body, input, button{
 
 /* scroll */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 7px;
   z-index: 100;
 }
 ::-webkit-scrollbar-track {
