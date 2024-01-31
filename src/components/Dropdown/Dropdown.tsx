@@ -35,21 +35,6 @@ function Dropdown({position="left", multiSelect, filterKey, allOption=true, item
                 setSelection({ [filterKey]: newSelection });
             }
         }
-        // if (!selection.some(current => current === item)) {
-        //     if (!allowMultiSelect) {
-        //         setSelection({[filterKey]: [item]});
-        //         setOpenDD(false);
-        //     } else {
-        //         setSelection({[filterKey]: [...selection, item]});
-        //     }
-        // } else {
-        //     let selectionAfterRemoval = selection;
-
-        //     selectionAfterRemoval = selectionAfterRemoval.filter(
-        //         current => current !== item
-        //     );
-        //     setSelection({[filterKey]: [...selectionAfterRemoval]});
-        // }
     }
 
     const handleClickAll=()=>{
@@ -68,11 +53,6 @@ function Dropdown({position="left", multiSelect, filterKey, allOption=true, item
             }
             return false;
         }
-
-        // if (selection.some(current => current === item)) {
-        //     return true;
-        // }
-        // return false;
     }
 
     function handleClickOutside(event: MouseEvent) {
@@ -96,8 +76,6 @@ function Dropdown({position="left", multiSelect, filterKey, allOption=true, item
                 ${selection!==null && selection?.length > 0 && 'dd-show-color'}`} 
                 onClick={toggle}
             >
-                {/* {selection.length > 0 ? selection.join(', ') : !allOption? items[0] : title} */}
-
                 {Array.isArray(selection)
                     ? selection.length > 0 ? 
                         selection.join(', ')

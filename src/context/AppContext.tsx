@@ -103,12 +103,18 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     LuangNamtha:['Viengphoukha', 'Namtha', 'Sing', 'Long', 'Na Le'],
     Oudomxay:['Beng', 'Nga', 'Houne', 'Xay', 'Na Mo', 'La', 'Pak Beng'],
     Bokeo:['Pak Tha', 'Houayxay', 'Meung', 'Ton Pheung', 'Pha Oudom'],
-    LuangPrabang:['Pak Seng', 'Ngoy', 'Xiengngeun', 'Phonxay', 'Chomphet', 'Luang Prabang', 'Nam Bak', 'Pak Ou', 'Phoukhoune', 'Phonthong', 'Viengkham'],
+    LuangPrabang:['Pak Seng', 'Ngoy', 'Xiengngeun', 'Phonxay', 'Chomphet', 'Nane', 'Luang Prabang', 'Nam Bak', 'Pak Ou', 'Phoukhoune', 'Phonthong', 'Viengkham'],
     Houaphan:["Viengxay", 'Houameuang', 'Xam Neua', 'Hiam', 'Xiengkho', 'Et', 'Samtay', 'Xon', 'Kone', 'Sop Bao'],
     Xayabury:['Sainyabuli', 'Khop', 'Hongsa', 'Ngeun', 'Xienghone', 'Phiang', 'Parklai', 'Kenethao', 'Botene', 'Thongmyxay', 'Xaisathan'],
     Xiengkhouang :['Nong Het', 'Kham', 'Phonsavan', 'Mok May', 'Khoune', 'Phaxay', 'Phou Kout'],
     VientianeProvince:['Vangvieng', 'Thoulakhom', 'Phonhong', 'Keo Oudom', 'Kasy', 'Hinhurp', 'Xanakharm', 'Feuang', 'Mad', 'Viengkham'],
+    Xaysoumboun:["Thathom", 'Longxan', 'Anouvong', 'Longchaeng', 'Hom'],
     Bolikhamxai:["Khamkeut", 'Pakkading', 'Thaphabat', 'Viengthong', 'Borikhane', 'Pakxan', 'Xaichamphon'],
+    Khammuane:["Nong Bok", "Thakhek", 'Mahaxay', 'Yommalath', 'Hineboune', 'Sebangphay', 'Boualapha', 'Nakai', 'Kounkham', 'Xaibouathong'],
+    Savannakhet:["Atsaphangthong", 'Phine', 'Kaysone Phomvihane', 'Outhoumphone', 'Thapangthong', 'Songkhone', 'Seponh', 'Nong', 'Xayboury', 'Viraboury', 'Champhone', 'Xonaboury', 'Thaphalanxay', 'Assaphone', 'Xonboury'],
+    Salavan:["Khongsedone", 'Lakhonepheng', 'Toumlane', 'Lao Ngam', 'Vapy', 'Salavan', 'Ta Oy', 'Sa Mouay'],
+    Sekong:['Tha Teng', 'Kaleum', 'Dak Cheung', 'La Mam'],
+    Champasak:['Parkse', 'Sanasomboun', 'Paksong', 'Khong','Batiengchaleunsouk', 'Pathouphone', 'Champassack', 'Phonthong', 'Soukhoumma', 'Mounlapamok'],
     Attapeu:['Samakhixay', 'Sanxay', 'Saysetha', 'Sanamxay', 'Phouvong']
   }
 

@@ -42,28 +42,28 @@
     width: 100%;
     cursor: pointer;
 }
-#LAVT{
-    fill: rgb(201, 69, 49);
-}
 .county-map{
     height: 95%;
     width: 100%;
     cursor: pointer;
 }
-.county{
+.province.active, .county.active{
+    fill: rgb(201, 69, 49);
+}
+.province, .county{
     stroke: #000;
     fill: #FEFEE9;
-    stroke-width: 3px;
+    stroke-width: 1.8px;
     stroke-linecap:round;
     stroke-linejoin:round;
     cursor: pointer;
     transition: all 0.3s;
 }
-.province-map .county{
-    stroke-width:0.5;
-}
-.county:hover{
+.province:hover, .county:hover{
     fill: rgb(100, 212, 148) !important;
+}
+.province{
+    stroke-width:0.8;
 }
 .county-name{
     font-size: 35px;
