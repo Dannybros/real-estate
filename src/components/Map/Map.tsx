@@ -36,8 +36,6 @@ interface CountyProps extends ProvinceProps{
   name: string;
   points?: string;
   d?: string;
-  handleClick: (event: React.MouseEvent<SVGElement>) => void;
-  checkActiveArea: (name:string) => boolean;
 }
 
 interface ProvinceComponents {
@@ -92,25 +90,30 @@ function Map({type}:ModalContainerProps) {
 
   const SelectedProvinceComponent = filters.province && provinceComponents[filters.province]
 
+  // change color when mouse enters to map area
   const handleMouseOver = (event: React.MouseEvent<SVGPathElement>)=>{
     const provinceName = event.currentTarget.getAttribute('name');
     setHoverArea(provinceName);
   }
 
+  // change color when mouse out map area
   const handleMouseOut = ()=>{
     setHoverArea(null);
   }
 
+  // function for when province area is clicked
   const handleProvinceClick = ()=>{
     setIsProvinceMap(false);
     updateFilters({province:hoverArea})
   }
 
+  // command to go back from county map to province map
   const showProvinceMap = ()=>{
     setIsProvinceMap(true);
     updateFilters({areas:[]})
   }
 
+  // function for when county area is clicked
   const handleCountyClick=(event: React.MouseEvent<SVGElement>)=>{
     const item = event.currentTarget.getAttribute('name');
     if(item!==null){
@@ -123,6 +126,7 @@ function Map({type}:ModalContainerProps) {
 
   }
 
+  // check if the province is the selected province
   const checkActiveProvince=(name:string)=>{
     if(filters.province === name){
       return true
@@ -130,6 +134,7 @@ function Map({type}:ModalContainerProps) {
     return false
   }
 
+  // check if the county is the selected counties
   const checkActiveArea=(name:string)=>{
     if(filters.areas.includes(name)){
       return true

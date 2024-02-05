@@ -38,7 +38,7 @@ function Home() {
     const inputValue = event.target.value;
     updateFilters({search:inputValue})
   }
-
+  
   return (
     <div className='home'>
       <section className='hero-element'>
@@ -62,7 +62,7 @@ function Home() {
               <div className='search-form'>
                 <div className='search-fields-box'>
                   <div className="search-field">
-                    <Dropdown setSelection={updateFilters} selection={filters.province} items={search_provinces} filterKey="provinces"/>
+                    <Dropdown setSelection={updateFilters} selection={filters.province} items={search_provinces} filterKey="province"/>
                   </div>
                   <div className="search-field">
                     <Dropdown setSelection={updateFilters} selection={filters.areas} items={search_cities} filterKey="areas" multiSelect={true}/>
@@ -77,9 +77,9 @@ function Home() {
                   </div>
                 </div>
                 <div  className='search-btn-box font-small'>
-                  <button className='search-btn'>
+                  <Link to="/explore" className='search-btn'>
                     Search
-                  </button>
+                  </Link>
                   <button className='search-btn cancel'>
                     Cancel
                   </button>
@@ -93,7 +93,7 @@ function Home() {
         <div className='container'>
           <h1 className='font-subheader'>Our Featured Exclusives</h1>
           <p>
-            Searching for your ideal home or commercial property in the UAE shouldn't be a daunting experience. That's why we're here to assist you in finding the perfect property at the right price.
+            Searching for your ideal home or commercial property in the Laos shouldn't be a daunting experience. That's why we're here to assist you in finding the perfect property at the right price.
           </p>
           <div className='feature-card-wrapper'>
             {Array.from({length:8}).map((_, i)=>(

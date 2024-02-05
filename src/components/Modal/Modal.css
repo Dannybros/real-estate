@@ -41,6 +41,9 @@
     transition: all 0.4s linear;
     overflow: hidden;
 }
+.modal-content.small{
+    max-width: 500px;
+}
 .modal.open .modal-content{
     opacity: 1;
     transform: translateY(0%);

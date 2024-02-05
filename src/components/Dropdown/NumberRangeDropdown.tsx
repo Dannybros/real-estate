@@ -22,7 +22,7 @@ function NumberRangeDropdown({position="left", setNumberRange, filterKey, priceR
 
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const toggle = () => setOpenDD(!openDD);
+    const toggle = () => setOpenDD((openDD)=>!openDD);
 
     function handleClickOutside(event: MouseEvent) {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target as HTMLElement)) {

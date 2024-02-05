@@ -121,7 +121,7 @@ function Savannakhet({handleClick, checkActiveArea}:ProvinceProps) {
         <g id="Savannakhet-names">
             <text transform="matrix(1 0 0 1 650.7238 100.6463)" className="county-name">Atsaphangthong</text>
             <text transform="matrix(1 0 0 1 1181.6963 629.3173)" className="county-name">Phine</text>
-            <text transform="matrix(1 0 0 1 123.2708 735.2408)" className="county-name">Kaysone Phomvihane</text>
+            <text transform="matrix(1 0 0 1 50.2708 605.2408)" className="county-name">Kaysone Phomvihane</text>
             <text transform="matrix(1 5.151273e-04 -5.151273e-04 1 120.2278 193.1966)" className="county-name">Outhoumphone</text>
             <text transform="matrix(1 0 0 1 946.9499 889.108)" className="county-name">Thapangthong</text>
             <text transform="matrix(1 0 0 1 634.9224 823.7791)" className="county-name">Songkhone</text>
@@ -136,7 +136,7 @@ function Savannakhet({handleClick, checkActiveArea}:ProvinceProps) {
             <text transform="matrix(1 5.151273e-04 -5.151273e-04 1 441.4538 688.6583)" className="county-name">Xonboury</text>
             <line className="county-indicator" x1="755.5" y1="111.5" x2="770.5" y2="424.5"/>
             <line className="county-indicator" x1="313.5" y1="200.5" x2="555.5" y2="376.5"/>
-            <line className="county-indicator" x1="343.5" y1="710.5" x2="387.5" y2="524.5"/>
+            <line className="county-indicator" x1="313.5" y1="570.5" x2="387.5" y2="524.5"/>
         </g>
     </svg>
   )

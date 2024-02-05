@@ -9,18 +9,26 @@ import Explore from './pages/Explore/Explore';
 import { useAppContext } from './context/AppContext';
 import Detail from './pages/Detail/Detail';
 import About from './pages/About/About';
+import FilterModal from './pages/Explore/FilterModal';
+import Map from './components/Map/Map';
+import SignIn from './pages/SignIn/SignIn';
+
+export type ModalType = 'Setting' | 'Map' | 'SignIn';
 
 function App() {
-  const {isFilterModalOpen} = useAppContext();
+  const {isModalOpen, modalType} = useAppContext();
 
   const RedirectToExplorePage = () => {
     return <Navigate to="/explore/page/1" replace={true} />;
   };
 
   return (
-    <div className={`App ${isFilterModalOpen && 'modal-open'} font-default`}>
+    <div className={`App ${isModalOpen && 'modal-open'} font-default`}>
       <BrowserRouter>
+        {/* nav */}
         <Nav/>
+
+        {/* pages */}
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/explore" element={<RedirectToExplorePage/>} />
@@ -28,6 +36,13 @@ function App() {
           <Route path='/property/:id' element={<Detail/>}/>
           <Route path='/about' element={<About/>}/>
         </Routes>
+
+        {/* modal */}
+        <FilterModal type={modalType}/>
+        <Map type={modalType}/>
+        <SignIn type={modalType}/>
+
+        {/* footer */}
         <Footer/>
       </BrowserRouter >
     </div>

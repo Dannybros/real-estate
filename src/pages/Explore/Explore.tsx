@@ -1,4 +1,4 @@
-  import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Explore.css'
 import Card from '../../components/Card/Card';
 import Dropdown from '../../components/Dropdown/Dropdown';
@@ -9,15 +9,10 @@ import { CiSearch } from "react-icons/ci";
 import { VscSettings } from "react-icons/vsc";
 import Pagination from '../../components/Pagination/Pagination';
 import { FaMapMarkedAlt } from "react-icons/fa";
-import Map from '../../components/Map/Map';
-import FilterModal from './FilterModal';
-
-type ModalType = 'Setting' | 'Map';
 
 const Explore:React.FC=()=>{
   const { page } = useParams();
-  const {toggleFilterModal, filters, updateFilters, propertyStatus, propertyTypes, sortList} = useAppContext();
-  const [activeModal, setActiveModal] = useState<ModalType>("Setting");
+  const {toggleModal, filters, updateFilters, propertyStatus, propertyTypes, sortList} = useAppContext();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -38,15 +33,11 @@ const Explore:React.FC=()=>{
   }, []);
   
 
+  // updating the only search bar value
   const updateSearch = (event: React.ChangeEvent<HTMLInputElement>)=>{
     event.preventDefault();
     const inputValue = event.target.value;
     updateFilters({search:inputValue})
-  }
-
-  const showActiveModal= (type:ModalType)=>{
-    setActiveModal(type);
-    toggleFilterModal();
   }
 
   return (
@@ -70,10 +61,10 @@ const Explore:React.FC=()=>{
           <div className='price-filter'>
             <PriceDropdown setNumberRange={updateFilters} priceRange={filters.priceRange} position='right' filterKey="priceRange"/>
           </div>
-          <div className='filter-modal-btn dd-selected' onClick={()=>showActiveModal("Setting")}>
+          <div className='filter-modal-btn dd-selected' onClick={()=>toggleModal("Setting")}>
             <VscSettings/> All Filters
           </div>
-          <div className='filter-modal-btn dd-selected' onClick={()=>showActiveModal("Map")}>
+          <div className='filter-modal-btn dd-selected' onClick={()=>toggleModal("Map")}>
             <FaMapMarkedAlt/> Map
           </div>
         </main>
@@ -100,10 +91,6 @@ const Explore:React.FC=()=>{
         </div>
       </div>
       <Pagination totalPages={5}/>
-
-      <FilterModal type={activeModal}/>
-      <Map type={activeModal}/>
-      
     </div>
   );
 }

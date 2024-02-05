@@ -1,5 +1,6 @@
 import React from 'react'
 import './Land.css'
+import { IoIosHeart } from 'react-icons/io'
 
 interface LandProps {
     imgUrl:string
@@ -17,6 +18,9 @@ const Land:React.FC<LandProps>=({imgUrl})=>{
                 <div className='land-status'>
                     <span> RENT </span>
                     <span> SALE </span>
+                </div>
+                <div className='card-fav'>
+                    <IoIosHeart className='card-fav-icon'/>
                 </div>
             </div>
             <div className='land-item-body font-small'>

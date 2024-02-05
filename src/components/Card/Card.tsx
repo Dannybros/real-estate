@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { CiUser } from "react-icons/ci";
+import { IoIosHeart } from "react-icons/io";
 import { TfiRulerAlt2 } from "react-icons/tfi";
 import { LiaBathSolid } from "react-icons/lia";
 import { IoBedOutline } from "react-icons/io5";
@@ -17,10 +18,12 @@ interface CardProps {
 
 const Card:React.FC<CardProps>=({footer=true, btn=true, side=false, id})=>{
   return (
-    <Link to={`/property/${id}`} className='card'>
+    <div  className='card'>
         <div className={`card-wrapper ${side && 'side'}`}>
             <div className='card-thumb'>
-                <img src={card} alt="" />
+                <Link to={`/property/${id}`}>
+                    <img src={card} alt="" />
+                </Link>
                 <div className='card-price font-title'>
                     20,000,000 $
                 </div>
@@ -28,8 +31,11 @@ const Card:React.FC<CardProps>=({footer=true, btn=true, side=false, id})=>{
                     <span> RENT </span>
                     <span> SALE </span>
                 </div>
+                <div className='card-fav'>
+                    <IoIosHeart className='card-fav-icon'/>
+                </div>
             </div>
-            <div className='card-body'>
+            <Link to={`/property/${id}`} className='card-body'>
                 <div className='truncate'>
                     Luxurious Living | Prime Location | Resale with PP
                 </div>
@@ -84,9 +90,9 @@ const Card:React.FC<CardProps>=({footer=true, btn=true, side=false, id})=>{
                         </div>
                     </div>
                 </>}
-            </div>
+            </Link>
         </div>
-    </Link>
+    </div>
   )
 }
 

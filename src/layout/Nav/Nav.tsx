@@ -5,12 +5,14 @@ import { FaUser } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
 import logo from "../../assest/logo.svg";
 import './Nav.css';
+import { useAppContext } from '../../context/AppContext';
 
 function Nav() {
 
+  const location = useLocation();
   const [showColor, setShowColor] = useState<Boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<Boolean>(false);
-  const location = useLocation();
+  const {toggleModal, user, setUser} = useAppContext();
 
   const changeNavColor = () =>{
     if(window.scrollY >= 80) setShowColor(true);
@@ -18,7 +20,11 @@ function Nav() {
   }
 
   const toggleShowMobileMenu = ()=>{
-    setShowMobileMenu(!showMobileMenu);
+    setShowMobileMenu((showMobileMenu)=>!showMobileMenu);
+  }
+
+  const handleSignOut = () =>{
+    setUser(null);
   }
 
   useEffect(() => {
@@ -26,12 +32,9 @@ function Nav() {
     return () => {
     window.removeEventListener('scroll', changeNavColor);
     };
-}, []);
+  }, []);
 
   const isHomePage = location.pathname === '/' ? true : false;
-
-  const test = false;
-  const user = false;
 
   return (
     <>
@@ -45,7 +48,7 @@ function Nav() {
           <img src={logo} width="127px" alt="logo"/>
           </Link>
         </div>
-        <div className={`nav-menu ${test && 'end'}`}>
+        <div className="nav-menu">
           <ul className='main-menu'>
             <Link to='/'>
               <li className='nav-link'> Home </li>
@@ -63,53 +66,37 @@ function Nav() {
               <li className='nav-link'> About Us </li>
             </Link>
           </ul>
-          {!test &&
-            <div className='nav-local-auth'>
+          <div className='nav-local-auth'>
+            <div className='nav-link dropdown'>
+              <GrLanguage/>
+              Language
+              <ul className='dropdown-menu'>
+                <li>English</li>
+                <li>Chinese</li>
+                <li>Korean</li>
+                <li>Lao</li>
+              </ul>
+            </div>
+            {user!==null?
               <div className='nav-link dropdown'>
-                <GrLanguage/>
-                Language
+                <div className='user-name'>
+                  {user.given_name.charAt(0)} {user.family_name.charAt(0)}
+                </div>
                 <ul className='dropdown-menu'>
-                  <li>English</li>
-                  <li>Chinese</li>
-                  <li>Korean</li>
-                  <li>Lao</li>
+                  <li>Favourites</li>
+                  <li>Schedules</li>
+                  <li>Setting </li>
+                  <li onClick={handleSignOut}>Sign Out</li>
                 </ul>
               </div>
-              {user?
-                <div className='nav-link dropdown'>
-                  <div className='user-name'>
-                    DL
-                  </div>
-                  <ul className='dropdown-menu'>
-                    <li>English</li>
-                    <li>Chinese</li>
-                    <li>Korean</li>
-                    <li>Lao</li>
-                  </ul>
-                </div>
-                :
-                <div className='nav-link sign-in'>
-                  <FaUser/>
-                  Sign In
-                </div>
-              }
-            </div>
-          }
-        </div>
-        {test&&
-          <div className='test'>
-            <div className='lang-list'>
-              <li className='active'>English</li>
-              <li>Chinese</li>
-              <li>Korean</li>
-              <li>Lao</li>
-            </div>
-            <div className='nav-link sign-in'>
-              <FaUser/>
-              Sign In
-            </div>
+              :
+              <div className='nav-link sign-in' onClick={()=>toggleModal('SignIn')}>
+                <FaUser/>
+                Sign In
+              </div>
+            }
           </div>
-        }
+        </div>
       </div>
     </nav>
 
@@ -135,7 +122,6 @@ function Nav() {
         </ul>
       </div>
     </div>
-    
     </>
   )
 }

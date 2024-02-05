@@ -6,6 +6,15 @@ export interface NumberRange {
   max: number | null;
 }
 
+export interface UserType{
+  given_name: string;
+  family_name: string;
+  email:string;
+}
+
+// Modal Type
+export type ModalType = 'Setting' | 'Map' | 'SignIn';
+
 // Define Filter type
 export interface FilterType {
   status:string;
@@ -31,8 +40,11 @@ interface MapType {
 
 // Define the context type
 interface AppContextType {
-  isFilterModalOpen: boolean;
-  toggleFilterModal: () => void;
+  user:UserType | null;
+  setUser: React.Dispatch<React.SetStateAction<UserType | null>>;
+  modalType:ModalType;
+  isModalOpen: boolean;
+  toggleModal: (type:ModalType) => void;
   language: string;
   changeLang: (newLang: string) => void;
   map:MapType;
@@ -53,10 +65,16 @@ interface AppProviderProps {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
+
+  // user
+  const [user, setUser]= useState<UserType | null>(null);
+
   // filter modal open / close
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState<boolean>(false);
-  const toggleFilterModal = () => {
-    setIsFilterModalOpen(!isFilterModalOpen);
+  const [modalType, setModalType] = useState<ModalType>("Setting");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const toggleModal = (type:ModalType) => {
+    type!==modalType && setModalType(type);
+    setIsModalOpen((isModalOpen)=>!isModalOpen);
   };
 
 
@@ -119,8 +137,11 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   }
 
   const contextValue: AppContextType = {
-    isFilterModalOpen,
-    toggleFilterModal,
+    user,
+    setUser,
+    modalType,
+    isModalOpen,
+    toggleModal,
     language,
     changeLang,
     map,

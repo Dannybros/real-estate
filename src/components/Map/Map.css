@@ -48,7 +48,7 @@
     cursor: pointer;
 }
 .province.active, .county.active{
-    fill: rgb(201, 69, 49);
+    fill: rgb(190, 221, 222);
 }
 .province, .county{
     stroke: #000;
@@ -60,7 +60,7 @@
     transition: all 0.3s;
 }
 .province:hover, .county:hover{
-    fill: rgb(100, 212, 148) !important;
+    fill: rgb(108, 220, 179);
 }
 .province{
     stroke-width:0.8;

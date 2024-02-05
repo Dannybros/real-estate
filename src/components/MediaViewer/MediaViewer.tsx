@@ -6,17 +6,19 @@ import Slider from "react-slick";
 
 interface ImageViewerProps {
     imgs:string[];
-    viewImgIndex:number,
+    viewImgIndex?:number,
+    viewFloorPlans?:boolean,
     setViewImgIndex:React.Dispatch<React.SetStateAction<number>>
 }
 
 interface MediaProps extends ImageViewerProps{
+    floorPlans:string[];
     toggleImgView: () => void;
     activeTab:string,
     setActiveTab:React.Dispatch<React.SetStateAction<string>>
 }
 
-const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgIndex})=>{
+const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex=0, viewFloorPlans=false, setViewImgIndex})=>{
     const imgSliderRef = useRef<Slider>(null);
 
     const sliderNextClick = ()=>{
@@ -24,10 +26,12 @@ const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgInd
 
             imgSliderRef.current.slickNext();
 
-            if(viewImgIndex >=imgs.length){
-                setViewImgIndex(1)
-            }else{
-                setViewImgIndex(viewImgIndex+1)
+            if(!viewFloorPlans){
+                if(viewImgIndex >= imgs.length-1){
+                    setViewImgIndex(0)
+                }else{
+                    setViewImgIndex((index)=>index+1)
+                }
             }
         }
     }
@@ -37,13 +41,14 @@ const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgInd
 
             imgSliderRef.current.slickPrev();
 
-            if(viewImgIndex <= 1){
-                setViewImgIndex(imgs.length)
-            }else{
-                setViewImgIndex(viewImgIndex-1)
+            if(!viewFloorPlans){
+                if(viewImgIndex <= 0){
+                    setViewImgIndex(imgs.length - 1)
+                }else{
+                    setViewImgIndex((index)=>index-1)
+                }
             }
         }
-
     };
  
     const settings = {
@@ -59,15 +64,15 @@ const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgInd
     return(
         <div className='picture-container'>
             <div className='img-number font-title'>
-                {viewImgIndex + 1} of {imgs.length}
+                {viewImgIndex + 1 } of {imgs.length}
             </div>
             <div className='img-slider-btn'>
-                <span className='viewer-btn' onClick={sliderPreviousClick}>
+                <button className='viewer-btn' onClick={sliderPreviousClick}>
                     <FaChevronLeft/>
-                </span>
-                <span className='viewer-btn' onClick={sliderNextClick}>
+                </button>
+                <button className='viewer-btn' onClick={sliderNextClick}>
                     <FaChevronRight/>
-                </span>
+                </button>
             </div>
             <Slider {...settings} ref={imgSliderRef}>
                 {imgs.map((img, i)=>(
@@ -83,13 +88,12 @@ const ImageViewer:React.FC<ImageViewerProps>=({imgs, viewImgIndex, setViewImgInd
 const VdoViewer:React.FC = () =>{
     return(
        <div className='vdo-container'>
-        <iframe className='property-vdo' src="https://www.youtube.com/embed/cXyxwp39S1I" title="MAXHUB V5 Interactive Flat Panel Officially Launched" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-
+            <iframe className='property-vdo' src="https://www.youtube.com/embed/cXyxwp39S1I" title="MAXHUB V5 Interactive Flat Panel Officially Launched" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
        </div>
     )
 }
 
-const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, viewImgIndex, setViewImgIndex, activeTab, setActiveTab})=> {
+const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, floorPlans, viewImgIndex, setViewImgIndex, activeTab, setActiveTab})=> {
   
     return (
     <div className='image-viewer'>
@@ -102,6 +106,12 @@ const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, viewImgIndex, setV
                     Pictures
                 </li>
                 <li 
+                    className={`${activeTab==="FLoor Plan" && 'active'}`}
+                    onClick={()=>setActiveTab("FPlan")}
+                >
+                    Floor Plan
+                </li>
+                <li 
                     className={`${activeTab==="Vdo" && 'active'}`}
                     onClick={()=>setActiveTab("Vdo")}
                 >
@@ -112,6 +122,9 @@ const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, viewImgIndex, setV
         </div>
         {activeTab==="Pic" &&
             <ImageViewer imgs={imgs} setViewImgIndex={setViewImgIndex} viewImgIndex={viewImgIndex}/>
+        }
+        {activeTab==="FPlan" &&
+            <ImageViewer imgs={floorPlans} viewFloorPlans={true} setViewImgIndex={setViewImgIndex}/>
         }
         {activeTab==="Vdo" &&
             <VdoViewer/>

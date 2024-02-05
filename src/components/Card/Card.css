@@ -46,6 +46,17 @@
     aspect-ratio: 4/3;
     vertical-align: top;
 }
+.card-fav{
+    position: absolute;
+    right: 5%;
+    top: 9%;
+    font-size: 30px;
+    color: rgb(73, 72, 72);
+    z-index: 1;
+}
+.card-fav-icon:hover{
+    fill: rgb(237, 75, 224);
+}
 .card-price,
 .land-price{
     position: absolute;
@@ -58,7 +69,7 @@
 .card-status,
 .land-status{
     position: absolute;
-    right: 5%;
+    left: 5%;
     top: 10%;
     display: flex;
     gap: 10px;
@@ -71,8 +82,11 @@
     background: rgba(0,0,0,0.65);
 }
 .card-body{
-    padding: 20px;
+    padding: 15px;
     text-align: start;
+    color: inherit;
+    text-decoration: none;
+    display: block;
 }
 .card-body a{
     text-decoration: none;

@@ -20,7 +20,7 @@ function Dropdown({position="left", multiSelect, filterKey, allOption=true, item
 
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const toggle = () => setOpenDD(!openDD);
+    const toggle = () => setOpenDD((openDD)=>!openDD);
 
     function handleOnClick(item:string) {
         if(!allowMultiSelect){

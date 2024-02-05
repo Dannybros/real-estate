@@ -134,13 +134,13 @@ const imgs=[
   "https://photos.zillowstatic.com/fp/c4e6d0b63197af27d37d94e5f29cef0f-uncropped_scaled_within_1536_1152.webp"
 ]
 
-const floorImg=["https://e7.pngegg.com/pngimages/647/669/png-clipart-house-plan-floor-plan-architecture-house-angle-building-thumbnail.png"]
+const floorPlans=["https://e7.pngegg.com/pngimages/647/669/png-clipart-house-plan-floor-plan-architecture-house-angle-building-thumbnail.png"]
 
 function Detail() {
 
   const [shortenDetail, setShortenDetail] = useState<boolean>(false);
   const [columns, setColumns] = useState<number>(3);
-  const [isImgViewOpen, setIsImgViewOpen] = useState<boolean>(false);
+  const [isMediaOpen, setIsMediaOpen] = useState<boolean>(false);
   const [imgLength, setImgLength] = useState<number>(7);
   const [viewImgIndex, setViewImgIndex] = useState<number>(1);
   const [mediaActiveTab, setMediaActiveTab] = useState<string>("Pic");
@@ -184,26 +184,35 @@ function Detail() {
     newInteriors.push(chunk);
   }
 
+  // toggle long house description
   const toggleDetail = ()=>{
-    setShortenDetail(!shortenDetail);
+    setShortenDetail((shortenDetail)=>!shortenDetail);
   }
 
-  const toggleImgView = () =>{
-    setIsImgViewOpen(!isImgViewOpen);
+  // toggle media viewer such as image, floor plans and video
+  const toggleMediaView = () =>{
+    setIsMediaOpen((isMediaOpen)=>!isMediaOpen);
   }
   
+  // open picture tab on media view when image is clicked 
+  // with which image index to see first
   const handleImgClick=(index:number)=>{
     setMediaActiveTab("Pic")
     setViewImgIndex(index);
-    toggleImgView();
+    toggleMediaView();
   }
 
+  // open floor plan tab on media view when floor plan is clicked
+  const handleFloorClick =()=>{
+    setMediaActiveTab("FPlan");
+    toggleMediaView();
+  }
+
+  // open video tab on media view when button to see vdo is clicked
   const handleVdoClick = ()=>{
     setMediaActiveTab("Vdo")
-    toggleImgView();
+    toggleMediaView();
   }
-
-  const allImg = [...imgs, ...floorImg];
 
   return (
     <div className='detail-page'>
@@ -214,7 +223,7 @@ function Detail() {
               <img src={imgs[i]} alt=""/>
             </div>
           ))}
-          <div className='btn-all-photo' onClick={()=>handleImgClick(0)}>View all {allImg.length} photos</div>
+          <div className='btn-all-photo' onClick={()=>handleImgClick(0)}>View all {imgs.length} photos</div>
           <div className='btn-vdo' onClick={handleVdoClick}>View Video</div>
         </div>
         <div className='property-info'>
@@ -282,8 +291,8 @@ function Detail() {
                   Floor Plan
                 </div>
                 <img 
-                  src={floorImg[0]} alt="" 
-                  onClick={()=>handleImgClick(imgLength)}
+                  src={floorPlans[0]} alt="" 
+                  onClick={handleFloorClick}
                 />
               </div>
               <div className='feature-item-box interior'>
@@ -357,10 +366,11 @@ function Detail() {
           </div>
         </div>
       </div>
-      {isImgViewOpen && 
+      {isMediaOpen && 
         <MediaViewer 
-          toggleImgView={toggleImgView} 
-          imgs={allImg}
+          toggleImgView={toggleMediaView} 
+          imgs={imgs}
+          floorPlans={floorPlans}
           activeTab={mediaActiveTab} 
           setActiveTab={setMediaActiveTab}
           viewImgIndex={viewImgIndex}
