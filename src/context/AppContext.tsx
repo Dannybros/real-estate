@@ -1,4 +1,5 @@
 import React, { createContext, useContext, ReactNode, useState } from 'react';
+import { useLocalStorage } from './useLocalStorage';
 
 // Define price range
 export interface NumberRange {
@@ -6,14 +7,14 @@ export interface NumberRange {
   max: number | null;
 }
 
-export interface UserType{
+export type UserType = {
   given_name: string;
   family_name: string;
-  email:string;
-}
+  email: string;
+} | null;
 
 // Modal Type
-export type ModalType = 'Setting' | 'Map' | 'SignIn';
+export type ModalType = 'Setting' | 'Map' | 'SignIn' | 'Request';
 
 // Define Filter type
 export interface FilterType {
@@ -67,7 +68,8 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   // user
-  const [user, setUser]= useState<UserType | null>(null);
+  // const [user, setUser]= useLocalStorage<UserType | null>(null);
+  const [user, setUser]= useLocalStorage<UserType>('user', null);
 
   // filter modal open / close
   const [modalType, setModalType] = useState<ModalType>("Setting");
@@ -79,16 +81,15 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
 
   // change lang
-  const storedLang = localStorage.getItem('lang') || 'en';
-  const [language, setLanguage] = useState(storedLang);
+  // const storedLang = localStorage.getItem('lang') || 'en';
+  const [language, setLanguage] = useLocalStorage('lang', 'en');
   const changeLang = (newLang: string) => {
     setLanguage(newLang);
-    localStorage.setItem('lang', newLang);
   };
 
 
   // filters
-  const [filters, setFilters] = useState<FilterType>({
+  const [filters, setFilters] = useLocalStorage<FilterType>('filter',{
     status:"All",
     priceRange: { min: null, max: null },
     sizeRange: { min: null, max: null },

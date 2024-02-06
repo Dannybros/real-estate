@@ -10,21 +10,8 @@
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
    
-}
-.card-wrapper.side{
-    display: flex;
-}
-.card-wrapper.side .card-thumb{
-    width: 40%;
-    margin: 0;
-}
-.card-wrapper.side .card-thumb img{
-    width: 100%;
-    aspect-ratio: 5/3.5 ;
-}
-.card-wrapper.side .card-body{
-    flex:1
 }
 
 .card-thumb,
@@ -49,7 +36,7 @@
 .card-fav{
     position: absolute;
     right: 5%;
-    top: 9%;
+    top: 5%;
     font-size: 30px;
     color: rgb(73, 72, 72);
     z-index: 1;

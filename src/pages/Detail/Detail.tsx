@@ -6,6 +6,7 @@ import './Detail.css'
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
 import MediaViewer from '../../components/MediaViewer/MediaViewer';
+import { useAppContext } from '../../context/AppContext';
 
 const surroundings = [
   {
@@ -138,7 +139,9 @@ const floorPlans=["https://e7.pngegg.com/pngimages/647/669/png-clipart-house-pla
 
 function Detail() {
 
-  const [shortenDetail, setShortenDetail] = useState<boolean>(false);
+  const {toggleModal} = useAppContext();
+
+  const [shortenDetail, setShortenDetail] = useState<boolean>(true);
   const [columns, setColumns] = useState<number>(3);
   const [isMediaOpen, setIsMediaOpen] = useState<boolean>(false);
   const [imgLength, setImgLength] = useState<number>(7);
@@ -348,12 +351,12 @@ function Detail() {
               </div>
             </div>
           </div>
-          <div className="property-contact-box">
-            <button className='btn-request font-default'>
+          <div className="property-contact-box"> 
+            <button className='btn-request font-default' onClick={()=>toggleModal('Request')}>
               Request a Tour
             </button>
             <div className='contact-container'>
-              <Link to="/" className='btn-contact'>
+              <Link to="/about" className='btn-contact'>
                 Contact us
               </Link>
               <p>

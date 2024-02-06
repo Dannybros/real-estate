@@ -12,8 +12,7 @@ import About from './pages/About/About';
 import FilterModal from './pages/Explore/FilterModal';
 import Map from './components/Map/Map';
 import SignIn from './pages/SignIn/SignIn';
-
-export type ModalType = 'Setting' | 'Map' | 'SignIn';
+import Request from './components/Request/Request';
 
 function App() {
   const {isModalOpen, modalType} = useAppContext();
@@ -41,6 +40,7 @@ function App() {
         <FilterModal type={modalType}/>
         <Map type={modalType}/>
         <SignIn type={modalType}/>
+        <Request type={modalType}/>
 
         {/* footer */}
         <Footer/>

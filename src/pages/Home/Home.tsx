@@ -6,9 +6,9 @@ import Slider from "react-slick";
 import Dropdown from '../../components/Dropdown/Dropdown'
 import Card from '../../components/Card/Card';
 import Land from '../../components/Card/Land';
-import Province from '../../components/Province/Province';
 import { useAppContext } from '../../context/AppContext';
 import './Home.css'
+import City from '../../components/City/City';
 
 function Home() {
 
@@ -157,14 +157,14 @@ function Home() {
       <section className='province-section container'>
         <div className='province-widget'>
           <div className='province-item'> 
-            <Province
+            <City
               img='https://sevenstonesdxb.com/wp-content/uploads/2023/02/R7tEL7cI-Downtown-Dubai-by-Emaar-Properties-3.jpg'
               title='Vientiane City'
               number={20}
             />
           </div>
           <div className='province-item'>
-            <Province
+            <City
               img='https://sevenstonesdxb.com/wp-content/uploads/2023/02/Dubai-Marina-2.webp'
               title='Luang Prabang'
               number={20}
@@ -173,14 +173,14 @@ function Home() {
         </div>
         <div className='province-widget reverse'>
           <div className='province-item'> 
-            <Province
+            <City
               img='https://sevenstonesdxb.com/wp-content/uploads/2023/02/R7tEL7cI-Downtown-Dubai-by-Emaar-Properties-3.jpg'
               title='Vientiane City'
               number={20}
             />
           </div>
           <div className='province-item'>
-            <Province
+            <City
               img='https://sevenstonesdxb.com/wp-content/uploads/2023/02/Dubai-Marina-2.webp'
               title='Luang Prabang'
               number={20}
@@ -189,14 +189,14 @@ function Home() {
         </div>
         <div className='province-widget'>
           <div className='province-item'> 
-            <Province
+            <City
               img='https://sevenstonesdxb.com/wp-content/uploads/2023/02/R7tEL7cI-Downtown-Dubai-by-Emaar-Properties-3.jpg'
               title='Vientiane City'
               number={20}
             />
           </div>
           <div className='province-item'>
-            <Province
+            <City
               img='https://sevenstonesdxb.com/wp-content/uploads/2023/02/Dubai-Marina-2.webp'
               title='Luang Prabang'
               number={20}

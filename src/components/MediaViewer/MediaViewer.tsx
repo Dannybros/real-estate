@@ -106,7 +106,7 @@ const MediaViewer:React.FC<MediaProps>=({toggleImgView, imgs, floorPlans, viewIm
                     Pictures
                 </li>
                 <li 
-                    className={`${activeTab==="FLoor Plan" && 'active'}`}
+                    className={`${activeTab==="FPlan" && 'active'}`}
                     onClick={()=>setActiveTab("FPlan")}
                 >
                     Floor Plan

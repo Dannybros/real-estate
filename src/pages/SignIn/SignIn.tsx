@@ -11,6 +11,10 @@ function SignIn({type}:ModalContainerProps) {
 
     const handleCallBackResponse = async(response:any) =>{
         const userObject = jwtDecode(response.credential);
+
+        // google login
+        // must upload the profile to db
+        
         
         setUser(userObject as UserType);
         toggleModal(modalType);
@@ -48,7 +52,7 @@ function SignIn({type}:ModalContainerProps) {
         </ul>
         <form action="" className='sign-form'>
             <div className={`sign-wrapper ${loginTab && 'hide'}`}>
-                <div className='sign-input-box'>
+                <div className='input-box'>
                     <label htmlFor="sign-fname">
                         <strong>Family Name</strong> 
                     </label>
@@ -56,20 +60,20 @@ function SignIn({type}:ModalContainerProps) {
                 </div>
             </div>
             <div className={`sign-wrapper ${loginTab && 'hide'}`}>
-                <div className='sign-input-box'>
+                <div className='input-box'>
                     <label htmlFor="sign-gname">
                         <strong>Given Name</strong> 
                     </label>
                     <input className='font-default' type="text" name='sign-gname' id='sign-gname' placeholder='Enter Name'/>
                 </div>
             </div>
-            <div className='sign-input-box'>
+            <div className='input-box'>
                 <label htmlFor="sign-email">
                     <strong>Email</strong> 
                 </label>
                 <input className='font-default' type="text" name='sign-email' id='sign-email' placeholder='Enter email'/>
             </div>
-            <div className='sign-input-box'>
+            <div className='input-box'>
                 <label htmlFor="sign-pw">
                     <strong>Password</strong> 
                 </label>

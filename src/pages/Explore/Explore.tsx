@@ -86,7 +86,7 @@ const Explore:React.FC=()=>{
         </div>
         <div className='property-card-wrapper'>
           {Array.from({length:20}).map((_, i)=>(
-            <Card key={i} footer={false} side={false} id={i}/>
+            <Card key={i} footer={false} id={i}/>
           ))}
         </div>
       </div>

@@ -12,28 +12,27 @@ import './Card.css'
 interface CardProps {
     footer?:boolean;
     btn?:boolean
-    side?:boolean
     id:number
 }
 
-const Card:React.FC<CardProps>=({footer=true, btn=true, side=false, id})=>{
+const Card:React.FC<CardProps>=({footer=true, btn=true, id})=>{
   return (
     <div  className='card'>
-        <div className={`card-wrapper ${side && 'side'}`}>
-            <div className='card-thumb'>
-                <Link to={`/property/${id}`}>
-                    <img src={card} alt="" />
-                </Link>
-                <div className='card-price font-title'>
-                    20,000,000 $
+        <div className={`card-wrapper`}>
+            <Link to={`/property/${id}`}>
+                <div className='card-thumb'>
+                        <img src={card} alt="" />
+                    <div className='card-price font-title'>
+                        20,000,000 $
+                    </div>
+                    <div className='card-status'>
+                        <span> RENT </span>
+                        <span> SALE </span>
+                    </div>
                 </div>
-                <div className='card-status'>
-                    <span> RENT </span>
-                    <span> SALE </span>
-                </div>
-                <div className='card-fav'>
-                    <IoIosHeart className='card-fav-icon'/>
-                </div>
+            </Link>
+            <div className='card-fav'>
+                <IoIosHeart className='card-fav-icon'/>
             </div>
             <Link to={`/property/${id}`} className='card-body'>
                 <div className='truncate'>
@@ -65,6 +64,7 @@ const Card:React.FC<CardProps>=({footer=true, btn=true, side=false, id})=>{
                             </div>
                             <p>Sq / m²</p>
                         </li>
+                        
                     </ul>
                     <div className='card-info-list'>
                         <div className='card-type' style={{margin:btn? "0" : "auto"}}>

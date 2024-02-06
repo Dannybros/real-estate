@@ -37,15 +37,15 @@
     grid-template-rows:0fr;
     margin-block: 0;
 }
-.sign-wrapper > .sign-input-box{
+.sign-wrapper > .input-box{
     margin: 0;
 }
-.sign-input-box{
+.input-box{
     min-height: 0;
     width: 100%;
     margin-block: 20px;
 }
-.sign-input-box input{
+.input-box input{
     margin-top: 10px;
     border: 1px solid #b7b7b7b9;
     outline: none;
@@ -54,17 +54,17 @@
     padding: 15px 10px;
     background: #F6F6FA;
 }
-.sign-input-box input:focus{
+.input-box input:focus{
     color: #495057;
     background-color: #fff;
     border-color: #006AFF;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
-.sign-input-box input:hover{
+.input-box input:hover{
     border: 1px solid #006AFF;
 }
-.sign-input-box ul{
+.input-box ul{
     list-style: none;
     color: gray;
     margin:10px 0 0 20px;

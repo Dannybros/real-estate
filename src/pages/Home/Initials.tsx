@@ -40,6 +40,3 @@ export const newPropertySliderSettings = {
     }
     ]
 };
-
-export const statuses = ['All', 'Buy', 'Rent'];
-export const property_types:string[]=["Apartment", 'Villa', 'Condominium', 'House', 'Townhouse', 'Office / Building', 'Land', 'Industrial'];

@@ -6,7 +6,7 @@ import './FilterModal.css'
 import { FilterPropertyInteriorOption, FilterPropertyNumberOption, FilterPropertyType } from './FilterModalItems';
 
 const landTypes = ["Mountain", "Lake", "Woods", "Flat"]
-const IndustryTypes = ["Factor", "Mines"]
+const IndustryTypes = ["Factory", "Mines"]
 const Features = ["Private Pool", "Basement", "Roof", "Fireplace", "Hardwood Floors", 
 "Gardens"]
 
@@ -130,8 +130,8 @@ function FilterModal({type}:ModalContainerProps) {
               />
             <FilterPropertyInteriorOption
               title="Parking" 
-              filterKey="beds" 
-              selectedValue={filters.beds} 
+              filterKey="parking" 
+              selectedValue={filters.parking} 
               handleFilterChange={updateFilters} 
             />
           </div>

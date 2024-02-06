@@ -1,11 +1,11 @@
-.province-card{
+.city-card{
     position: relative;
     color: white;
     height: 100%;
     width: 100%;
     cursor: pointer;
 }
-.province-card::after{
+.city-card::after{
     content: "";
     position: absolute;
     inset: 0;
@@ -15,15 +15,15 @@
     z-index: 2;
     transition: 0.3s all linear;
 }
-.province-card:hover::after{
+.city-card:hover::after{
     background: transparent;
 }
-.province-card img{
+.city-card img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.province-text{
+.city-text{
     position: absolute;
     top: 30px;
     left: 30px;
@@ -31,7 +31,7 @@
     text-align: start;
     color: rgb(227, 226, 226);
 }
-.province-text .province-title{
+.city-text .city-title{
     margin-top: 10px;
     color: white;
 }

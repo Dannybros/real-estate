@@ -12,7 +12,7 @@ function Nav() {
   const location = useLocation();
   const [showColor, setShowColor] = useState<Boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<Boolean>(false);
-  const {toggleModal, user, setUser} = useAppContext();
+  const {toggleModal, changeLang,language, user, setUser} = useAppContext();
 
   const changeNavColor = () =>{
     if(window.scrollY >= 80) setShowColor(true);
@@ -69,12 +69,11 @@ function Nav() {
           <div className='nav-local-auth'>
             <div className='nav-link dropdown'>
               <GrLanguage/>
-              Language
+               {language==="en" ?"English" : language==="cn"? "Chinese" : "Lao" }
               <ul className='dropdown-menu'>
-                <li>English</li>
-                <li>Chinese</li>
-                <li>Korean</li>
-                <li>Lao</li>
+                <li onClick={()=>changeLang('en')}>English</li>
+                <li onClick={()=>changeLang('cn')}>Chinese</li>
+                <li onClick={()=>changeLang('la')}>Lao</li>
               </ul>
             </div>
             {user!==null?
